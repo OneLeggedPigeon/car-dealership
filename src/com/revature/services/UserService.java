@@ -3,7 +3,6 @@ package com.revature.services;
 import com.revature.people.*;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public abstract class UserService {
 
