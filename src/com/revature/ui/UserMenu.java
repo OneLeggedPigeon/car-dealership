@@ -20,7 +20,9 @@ public class UserMenu {
         }
         System.out.println("provide password");
         String password = scan.nextLine();
+        // TODO: add the new user to a database
         User user = UserService.makeUser(username, password);
+        // TODO: check if user was created
         System.out.println("Hello " + user);
     }
 }
