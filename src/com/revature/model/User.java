@@ -1,4 +1,4 @@
-package com.revature.people;
+package com.revature.model;
 
 public class User{
 
@@ -18,7 +18,15 @@ public class User{
         this.password = password;
     }
 
-    public String toString(){
+    public String getUsername(){
         return username;
+    }
+
+    public Object getPassword() {
+        return password;
+    }
+
+    public String toString(){
+        return getUsername();
     }
 }

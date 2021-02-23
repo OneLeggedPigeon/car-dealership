@@ -1,13 +1,13 @@
 package com.revature.ui;
 
-import com.revature.people.*;
+import com.revature.model.*;
 import com.revature.services.UserService;
 
 import java.util.Scanner;
 
 public class UserMenu {
 
-    public void CreateUserMenu(){
+    public void createUserMenu(){
         Scanner scan = new Scanner(System.in);
 
         System.out.println("===Welcome to Car Dealership===");
@@ -15,7 +15,7 @@ public class UserMenu {
         String username = scan.nextLine();
         while(UserService.isUsernameDupe(username)){
             System.out.println("that username is already in use");
-            System.out.println("provide different username");
+            System.out.println("please provide a different username");
             username = scan.nextLine();
         }
         System.out.println("provide password");
