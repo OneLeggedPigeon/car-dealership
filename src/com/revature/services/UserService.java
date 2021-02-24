@@ -8,6 +8,7 @@ public abstract class UserService {
 
     //ArrayList of all the usernames that have been instantiated
     static FlexArray users = new FlexArray();
+    static User activeUser = null;
 
     public static User makeUser(String username, String password){
         User user = new User(username, password);
