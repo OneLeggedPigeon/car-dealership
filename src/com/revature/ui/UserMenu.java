@@ -5,9 +5,9 @@ import com.revature.services.UserService;
 
 import java.util.Scanner;
 
-public class UserMenu {
+public abstract class UserMenu {
 
-    public void createUserMenu(){
+    public static void newUser(){
         Scanner scan = new Scanner(System.in);
 
         System.out.println("===Welcome to Car Dealership===");

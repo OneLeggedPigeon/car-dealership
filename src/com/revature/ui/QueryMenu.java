@@ -25,12 +25,12 @@ public abstract class QueryMenu {
         String result = "";
         boolean continueLoop = true;
         do {
-        //display all query options
-        for(int i = 0; i<queries.length; i++){
-            System.out.print(queries[i]);
-            //add slash after all but the last query
-            if (i<queries.length-1){System.out.print("/");}
-        }
+            //display all query options
+            for(int i = 0; i<queries.length; i++){
+                System.out.print(queries[i]);
+                //add slash after all but the last query
+                if (i<queries.length-1){System.out.print("/");}
+            }
             System.out.println();
             //check which option was chosen
             String answer = scan.nextLine();
