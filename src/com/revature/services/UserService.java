@@ -43,15 +43,4 @@ public abstract class UserService {
         }
         return user;
     }
-
-    public static boolean isLoginValid(String username, String password) {
-        // first check that user exists
-        // then check if password matches
-        User user = findUserByUsername(username);
-        boolean result = false;
-        if(user != null && user.getPassword().equals(password)){
-            result = true;
-        }
-        return result;
-    }
 }

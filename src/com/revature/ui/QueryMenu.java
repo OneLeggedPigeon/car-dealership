@@ -3,21 +3,8 @@ package com.revature.ui;
 import java.util.Scanner;
 
 public abstract class QueryMenu {
-    //"y" returns true, "n" returns false
-    public static boolean yesNo(Scanner scan){
-        while(true) {
-            System.out.println("y/n");
-            String answer = scan.nextLine();
-            if(answer.equals("y")){
-                return true;
-            } else if(answer.equals("n")){
-                return false;
-            }
-        }
-    }
-
     //return String of the selected query
-    public static String query(Scanner scan, String[] queries){
+    public static String showMenu(Scanner scan, String[] queries){
         String result = "";
         boolean continueLoop = true;
         do {
@@ -39,5 +26,17 @@ public abstract class QueryMenu {
             }
         } while(continueLoop);
         return result;
+    }
+    //"y" returns true, "n" returns false
+    public static boolean yesNo(Scanner scan){
+        while(true) {
+            System.out.println("y/n");
+            String answer = scan.nextLine();
+            if(answer.equals("y")){
+                return true;
+            } else if(answer.equals("n")){
+                return false;
+            }
+        }
     }
 }
