@@ -5,19 +5,15 @@ import java.util.Scanner;
 public abstract class QueryMenu {
     //"y" returns true, "n" returns false
     public static boolean yesNo(Scanner scan){
-        boolean result = false;
-        boolean continueLoop = true;
-        do {
+        while(true) {
             System.out.println("y/n");
             String answer = scan.nextLine();
             if(answer.equals("y")){
-                continueLoop = false;
-                result = true;
+                return true;
             } else if(answer.equals("n")){
-                continueLoop = false;
+                return false;
             }
-        } while(continueLoop);
-        return result;
+        }
     }
 
     //return String of the selected query

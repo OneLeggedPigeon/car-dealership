@@ -4,21 +4,26 @@ import java.util.Scanner;
 
 public abstract class MainMenu {
     public static void rootMenu(Scanner scan){
-        boolean loop = true;
+        System.out.println("===Welcome to Car Dealership===");
         String[] options = new String[]{
                 "login",
-                "new user"
+                "new user",
+                "exit"
         };
-        do {
+        while(true) {
             switch (QueryMenu.query(scan, options)) {
                 case "login":
-                    LoginMenu.showMenu();
+                    LoginMenu.showMenu(scan);
                     break;
                 case "new user":
-                    UserMenu.newUser();
+                    UserMenu.newUser(scan);
+                    break;
+                case "exit":
+                    System.exit(0);
                     break;
                 default:
+                    System.out.println("Command not recognised.");
             }
-        }while(loop);
+        }
     }
 }
