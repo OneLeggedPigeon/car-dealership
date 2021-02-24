@@ -4,7 +4,7 @@ package com.revature.collections;
 // makes a new array with a larger size each time an element is added
 public class FlexArray {
 
-    private Object[] array;
+    protected Object[] array;
 
     public FlexArray(){
         array = new Object[0];
