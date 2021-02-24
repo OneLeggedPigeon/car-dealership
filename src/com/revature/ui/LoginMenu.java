@@ -15,6 +15,7 @@ public abstract class LoginMenu {
         User user = UserService.findUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
             System.out.println("login successful");
+            UserMenu.actionMenu(scan, user);
         } else {
             System.out.println("login is invalid");
         }

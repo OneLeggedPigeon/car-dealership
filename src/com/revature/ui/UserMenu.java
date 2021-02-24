@@ -9,39 +9,93 @@ import java.util.Scanner;
 public abstract class UserMenu {
 
     public static void actionMenu(Scanner scan, User user){
-        System.out.println("===Welcome "+user+"===");
+        System.out.println("===Welcome "+user.getUserType()+" "+user+"===");
         FlexArray options = new FlexArray(new String[]{
-                "logout"
+                "logout",
+                "exit"
         });
-        if(user.getUserType() == UserType.USER){
-            options.add(new String[]{
-                    "register customer account"
-            });
+        //select what options to show the user based on UserType
+        switch (user.getUserType()){
+            case USER:
+                options.add(new String[]{
+                        "register customer account"
+                });
+                break;
+            case CUSTOMER:
+                options.add(new String[]{
+                        "owned"
+                });
+            case EMPLOYEE:
+                options.add(new String[]{
+                        "lot",
+                        "payments"
+                });
+                break;
+            default:
         }
-        if(user.getUserType() == UserType.CUSTOMER){
-            options.add(new String[]{
-                    "lot",
-                    "owned",
-                    "payments"
-            });
-        }
-        if(user.getUserType() == UserType.EMPLOYEE){
-            options.add(new String[]{
-                    "lot",
-                    "payments"
-            });
-        }
+        boolean logout = false;
 
-        while(true) {
+        while(!logout) {
             switch (QueryMenu.showMenu(scan, options.getStringArray())) {
-                case "login":
-                    LoginMenu.showMenu(scan);
-                    break;
-                case "new user":
-                    UserMenu.newUser(scan);
-                    break;
                 case "logout":
-                    System.exit(0);
+                    logout = true;
+                    break;
+                case "register customer account":
+                    System.out.println("register");
+                    switch (user.getUserType()){
+                        case USER:
+                            break;
+                        case CUSTOMER:
+                            System.out.println("you already have a customer account");
+                            break;
+                        case EMPLOYEE:
+                            System.out.println("make a separate account for customer activities");
+                            break;
+                        default:
+                    }
+                    break;
+                case "owned":
+                    System.out.println("owned");
+                    switch (user.getUserType()){
+                        case USER:
+                            System.out.println("you don't have permission for that");
+                            break;
+                        case CUSTOMER:
+                            break;
+                        case EMPLOYEE:
+                            System.out.println("make a separate account for customer activities");
+                            break;
+                        default:
+                    }
+                    break;
+                case "lot":
+                    System.out.println("lot");
+                    switch (user.getUserType()){
+                        case USER:
+                            System.out.println("you don't have permission for that");
+                            break;
+                        case CUSTOMER:
+                            break;
+                        case EMPLOYEE:
+                            break;
+                        default:
+                    }
+                    break;
+                case "payments":
+                    System.out.println("payments");
+                    switch (user.getUserType()){
+                        case USER:
+                            System.out.println("you don't have permission for that");
+                            break;
+                        case CUSTOMER:
+                            break;
+                        case EMPLOYEE:
+                            break;
+                        default:
+                    }
+                    break;
+                case "exit":
+                    System.exit(1);
                     break;
                 default:
                     System.out.println("Command not recognised.");
@@ -50,7 +104,7 @@ public abstract class UserMenu {
     }
 
     public static void newUser(Scanner scan){
-        String username = "";
+        String username;
         boolean dupe;
         boolean exit = false;
         do {
