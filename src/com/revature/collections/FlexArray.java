@@ -1,7 +1,5 @@
 package com.revature.collections;
 
-import java.util.Arrays;
-
 // Object that contains an array
 // makes a new array with a larger size each time an element is added
 public class FlexArray {
