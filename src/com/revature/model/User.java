@@ -4,7 +4,7 @@ public class User{
 
     private String username;
     private String password;
-    protected UserType userType;
+    private UserType userType;
 
     public User(){
         userType = UserType.USER;
@@ -23,6 +23,10 @@ public class User{
 
     public UserType getUserType(){
         return userType;
+    }
+
+    public void setUserType(UserType type){
+        userType = type;
     }
 
     public String getUsername(){

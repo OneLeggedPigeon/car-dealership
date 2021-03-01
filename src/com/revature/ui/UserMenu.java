@@ -44,6 +44,7 @@ public abstract class UserMenu {
                     System.out.println("register");
                     switch (user.getUserType()){
                         case USER:
+                            user.setUserType(UserType.CUSTOMER);
                             break;
                         case CUSTOMER:
                             System.out.println("you already have a customer account");
