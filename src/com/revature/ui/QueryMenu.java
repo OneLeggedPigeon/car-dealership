@@ -24,6 +24,7 @@ public abstract class QueryMenu {
                     break;
                 }
             }
+            if(continueLoop) System.out.println("Command not recognised.");
         } while(continueLoop);
         return result;
     }
