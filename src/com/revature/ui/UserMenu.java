@@ -10,41 +10,21 @@ public abstract class UserMenu {
 
     public static void actionMenu(Scanner scan, User user){
         System.out.println("===Welcome "+user.getUserType()+" "+user+"===");
-        FlexArray options = new FlexArray(new String[]{
-                "logout",
-                "exit"
-        });
-        //select what options to show the user based on UserType
-        switch (user.getUserType()){
-            case USER:
-                options.add(new String[]{
-                        "register customer account"
-                });
-                break;
-            case CUSTOMER:
-                options.add(new String[]{
-                        "owned"
-                });
-            case EMPLOYEE:
-                options.add(new String[]{
-                        "lot",
-                        "payments"
-                });
-                break;
-            default:
-        }
+        FlexArray options = generateOptions(user);
         boolean logout = false;
 
-        while(!logout) {
+        do {
             switch (QueryMenu.showMenu(scan, options.getStringArray())) {
                 case "logout":
                     logout = true;
                     break;
-                case "register customer account":
-                    System.out.println("register");
+                case "register":
                     switch (user.getUserType()){
                         case USER:
+                            System.out.println("customer account registered");
                             user.setUserType(UserType.CUSTOMER);
+                            // update options for new user type
+                            options = generateOptions(user);
                             break;
                         case CUSTOMER:
                             System.out.println("you already have a customer account");
@@ -99,9 +79,36 @@ public abstract class UserMenu {
                     System.exit(1);
                     break;
                 default:
-                    System.out.println("Command not recognised.");
+                    System.out.println("This shouldn't show up.");
             }
+        } while(!logout);
+    }
+
+    private static FlexArray generateOptions(User user) {
+        FlexArray options = new FlexArray(new String[]{
+                "logout",
+                "exit"
+        });
+        //select what options to show the user based on UserType
+        switch (user.getUserType()){
+            case USER:
+                options.add(new String[]{
+                        "register"
+                });
+                break;
+            case CUSTOMER:
+                options.add(new String[]{
+                        "owned"
+                });
+            case EMPLOYEE:
+                options.add(new String[]{
+                        "lot",
+                        "payments"
+                });
+                break;
+            default:
         }
+        return options;
     }
 
     public static void newUser(Scanner scan){
