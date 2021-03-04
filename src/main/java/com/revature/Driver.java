@@ -12,9 +12,10 @@ import java.util.Scanner;
 public class Driver {
 
     public static void main(String[] args) {
-        UserJDBC u = new UserJDBC();
+        UserJDBC u = UserJDBC.getInstance();
         try {
             u.getConnection();
+            System.out.println("Connected.");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
