@@ -88,7 +88,7 @@ public class HashMap<K,V>{
             while(temp.key != key && temp.next != null){
                 temp = temp.next;
             }
-            if(temp.key == key) {
+            if(temp.key.equals(key)) {
                 return temp.data;
             }
         }

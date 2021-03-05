@@ -15,6 +15,7 @@ public abstract class RootMenu {
                 "new user",
                 "exit"
         };
+        // main loop
         while(true) {
             switch (MenuService.queryMenu(scan, options)) {
                 case "login":
@@ -53,7 +54,7 @@ public abstract class RootMenu {
             System.out.println("provide password");
             String password = scan.nextLine();
             // TODO: add the new user to a database
-            User user = UserService.makeUser(username, password);
+            UserService.makeUser(username, password);
             // TODO: check if user was created
             System.out.println("account creation successful");
         }
