@@ -81,7 +81,6 @@ public class HashMap<K,V>{
         }
     }
 
-
     public V get(K key) {
 
         int index = key.hashCode() % capacity;
@@ -101,6 +100,24 @@ public class HashMap<K,V>{
             }
         }
         return null;
+    }
+
+    // changes value at specified key
+    public void set(K key, V newValue){
+
+        int index = key.hashCode() % capacity;
+
+        if(buckets[index] != null) {
+            Node<K, V> temp;
+            temp = buckets[index];
+
+            while(temp.key != key && temp.next != null){
+                temp = temp.next;
+            }
+            if(temp.key == key) {
+                temp.data = newValue;
+            }
+        }
     }
 
     public String toString(){

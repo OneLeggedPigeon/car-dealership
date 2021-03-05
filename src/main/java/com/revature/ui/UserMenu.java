@@ -31,9 +31,7 @@ public abstract class UserMenu {
             case "register":
                 //TODO: registration
                 System.out.println("customer account registered");
-                //user.setUserType(UserType.CUSTOMER);
-                // update options for new user type
-                //options = generateOptions(user);
+                logout = true;
                 break;
             case "logout":
                 logout = true;
