@@ -12,7 +12,7 @@ public abstract class LoginMenu {
         String username = scan.nextLine();
         System.out.println("password: ");
         String password = scan.nextLine();
-        User user = UserService.findUserByUsername(username);
+        User user = UserService.getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
             System.out.println("login successful");
             switch(user.getUserType()){

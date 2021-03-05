@@ -26,7 +26,7 @@ public class User{
         return username;
     }
 
-    public Object getPassword() {
+    public String getPassword() {
         return password;
     }
 

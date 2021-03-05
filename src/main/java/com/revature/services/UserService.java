@@ -7,40 +7,28 @@ import com.revature.collections.*;
 public abstract class UserService {
 
     //ArrayList of all the usernames that have been instantiated
-    static FlexArray users = new FlexArray();
+    static HashMap<String,User> users = new HashMap<String,User>();
     static User activeUser = null;
 
     public static User makeUser(String username, String password){
         User user = new User(username, password);
-        users.add(user);
+        users.put(username, user);
         return user;
+    }
+
+    // Change a User to a Customer
+    public static void registerUser(User u){
+        Customer c = new Customer(u.getUsername(),u.getPassword());
+        users.put(u.getUsername(), c);
     }
 
     //Is the username currently in use?
     public static boolean isUsernameDupe(String username){
-
-        for( Object user : users.toArray()){
-
-            if(username.equals(user.toString())){
-                return true;
-            }
-        }
-        return false;
+        return users.get(username) != null;
     }
 
     //returns null if name not found
-    public static User findUserByUsername(String username) {
-        int i = 0;
-        boolean found = false;
-        User user = null;
-        while(i < users.size() && !found){
-            User current = (User) users.get(i);
-            if(current.getUsername().equals(username)){
-                found = true;
-                user = current;
-            }
-            i++;
-        }
-        return user;
+    public static User getUserByUsername(String username) {
+        return users.get(username);
     }
 }
