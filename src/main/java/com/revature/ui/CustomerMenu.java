@@ -7,7 +7,7 @@ import com.revature.services.MenuService;
 
 import java.util.Scanner;
 
-public abstract class CustomerMenu extends UserMenu{
+public abstract class CustomerMenu{
     protected static String[] options = new String[]{
             "owned",
             "lot",
