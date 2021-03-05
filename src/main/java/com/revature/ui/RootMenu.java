@@ -1,5 +1,6 @@
 package com.revature.ui;
 
+import com.revature.model.Customer;
 import com.revature.model.User;
 import com.revature.services.MenuService;
 import com.revature.services.UserService;

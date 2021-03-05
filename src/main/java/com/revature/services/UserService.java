@@ -17,9 +17,10 @@ public abstract class UserService {
     }
 
     // Change a User to a Customer
-    public static void registerUser(User u){
+    public static Customer registerUser(User u){
         Customer c = new Customer(u.getUsername(),u.getPassword());
         users.put(u.getUsername(), c);
+        return c;
     }
 
     //Is the username currently in use?

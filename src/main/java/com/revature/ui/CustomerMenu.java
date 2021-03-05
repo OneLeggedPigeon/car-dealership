@@ -1,12 +1,13 @@
 package com.revature.ui;
 
 import com.revature.collections.FlexArray;
+import com.revature.model.Customer;
 import com.revature.model.User;
 import com.revature.services.MenuService;
 
 import java.util.Scanner;
 
-public class CustomerMenu extends UserMenu{
+public abstract class CustomerMenu extends UserMenu{
     protected static String[] options = new String[]{
             "owned",
             "lot",
@@ -14,26 +15,38 @@ public class CustomerMenu extends UserMenu{
             "logout",
             "exit"
     };
-    protected static boolean query(Scanner scan, User user, boolean logout) {
+
+    //Loop through user options until logout
+    public static void showMenu(Scanner scan, User user){
+        System.out.println("===Welcome "+user.getUserType()+" "+user+"===");
+        boolean logout;
+        do {
+            logout = query(scan, user);
+        } while(!logout);
+    }
+
+    protected static boolean query(Scanner scan, User user) {
         switch (MenuService.queryMenu(scan, options)) {
             case "owned":
+                //TODO:
                 System.out.println("owned");
                 break;
             case "lot":
+                //TODO:
                 System.out.println("lot");
                 break;
             case "payments":
+                //TODO:
                 System.out.println("payments");
                 break;
             case "logout":
-                logout = true;
-                break;
+                return true;
             case "exit":
                 System.exit(1);
                 break;
             default:
                 System.out.println("This shouldn't show up.");
         }
-        return logout;
+        return false;
     }
 }
