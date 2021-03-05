@@ -1,6 +1,6 @@
 package com.revature.collections;
 
-public class HashMap<K,V> {
+public class HashMap<K,V>{
 
     Node<K, V> buckets[];
     int size;

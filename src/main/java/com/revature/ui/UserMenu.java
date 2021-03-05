@@ -14,7 +14,7 @@ public abstract class UserMenu {
         boolean logout = false;
 
         do {
-            switch (QueryMenu.showMenu(scan, options.getStringArray())) {
+            switch (QueryMenu.showMenu(scan, options.toStringArray())) {
                 case "logout":
                     logout = true;
                     break;

@@ -33,7 +33,7 @@ public abstract class UserService {
         int i = 0;
         boolean found = false;
         User user = null;
-        while(i < users.length() && !found){
+        while(i < users.size() && !found){
             User current = (User) users.get(i);
             if(current.getUsername().equals(username)){
                 found = true;
