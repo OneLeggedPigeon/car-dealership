@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public abstract class UserMenu {
 
-    public static void actionMenu(Scanner scan, User user){
+    public static void showMenu(Scanner scan, User user){
         System.out.println("===Welcome "+user.getUserType()+" "+user+"===");
         FlexArray options = generateOptions(user);
         boolean logout = false;
