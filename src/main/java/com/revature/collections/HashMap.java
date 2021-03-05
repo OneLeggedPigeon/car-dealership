@@ -18,33 +18,26 @@ public class HashMap<K,V>{
         size = 0;
     }
 
+    // adds or replaces value at specified key
     public void put(K key, V value) {
         int index = Math.abs(key.hashCode() % capacity);
 
-
         if(buckets[index] == null){
             buckets[index] = new Node<K, V>(key, value);
-        }
-        else{
+        } else{
             Node<K, V> temp;
             temp = buckets[index];
 
-            if(buckets[index].key.equals(key)){
-                return;
-            }
-
-            while(temp.next != null){
-
-                if(temp.key.equals(key)){
-                    return;
-                }
-
+            while(temp.key != key && temp.next != null){
                 temp = temp.next;
             }
-            temp.next = new Node<K, V>(key, value);
+            if(temp.key == key) {
+                temp.data = value;
+            } else{
+                temp.next = new Node<K, V>(key, value);
+            }
         }
         size++;
-
     }
 
     public void remove(K key) {
@@ -100,24 +93,6 @@ public class HashMap<K,V>{
             }
         }
         return null;
-    }
-
-    // changes value at specified key
-    public void set(K key, V newValue){
-
-        int index = key.hashCode() % capacity;
-
-        if(buckets[index] != null) {
-            Node<K, V> temp;
-            temp = buckets[index];
-
-            while(temp.key != key && temp.next != null){
-                temp = temp.next;
-            }
-            if(temp.key == key) {
-                temp.data = newValue;
-            }
-        }
     }
 
     public String toString(){
