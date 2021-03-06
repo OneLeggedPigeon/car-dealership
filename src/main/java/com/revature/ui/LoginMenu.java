@@ -14,6 +14,7 @@ public abstract class LoginMenu {
         String username = scan.nextLine();
         System.out.println("password: ");
         String password = scan.nextLine();
+        // TODO: Handel Exception
         User user = UserService.getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
             System.out.println("login successful");

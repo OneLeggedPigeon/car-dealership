@@ -28,7 +28,6 @@ public abstract class UserMenu {
     protected static boolean query(Scanner scan, User user) {
         switch (MenuService.queryMenu(scan, options)) {
             case "register":
-                //TODO: registration
                 LoginMenu.primeLogin(UserService.registerUser(user));
                 System.out.println("customer account registered");
                 return true;
