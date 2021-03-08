@@ -1,9 +1,8 @@
 package com.revature.ui;
 
-import com.revature.model.Customer;
-import com.revature.model.User;
-import com.revature.services.MenuService;
-import com.revature.services.UserService;
+import com.revature.db.PreparedUser;
+import com.revature.service.MenuService;
+import com.revature.service.UserService;
 
 import java.util.Scanner;
 
@@ -35,6 +34,7 @@ public abstract class RootMenu {
 
     private static void newUser(Scanner scan){
         String username;
+        PreparedUser prep = new PreparedUser();
         boolean dupe;
         boolean exit = false;
         do {
@@ -55,6 +55,7 @@ public abstract class RootMenu {
             String password = scan.nextLine();
             // TODO: add the new user to a database
             UserService.makeUser(username, password);
+            prep.create(username,password);
             // TODO: check if user was created
             System.out.println("account creation successful");
         }

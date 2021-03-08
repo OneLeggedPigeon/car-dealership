@@ -3,7 +3,7 @@ package com.revature.ui;
 import java.util.Scanner;
 
 import com.revature.model.*;
-import com.revature.services.*;
+import com.revature.service.*;
 
 public abstract class LoginMenu {
     // User to automatically log in after logout

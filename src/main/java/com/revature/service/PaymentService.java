@@ -1,4 +1,4 @@
-package com.revature.services;
+package com.revature.service;
 
 public abstract class PaymentService {
     private static final double defaultSalesTax = .10;

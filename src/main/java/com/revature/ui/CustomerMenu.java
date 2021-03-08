@@ -1,9 +1,7 @@
 package com.revature.ui;
 
-import com.revature.collections.FlexArray;
-import com.revature.model.Customer;
 import com.revature.model.User;
-import com.revature.services.MenuService;
+import com.revature.service.MenuService;
 
 import java.util.Scanner;
 

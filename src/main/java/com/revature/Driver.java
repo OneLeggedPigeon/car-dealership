@@ -14,13 +14,7 @@ import java.util.Scanner;
 public class Driver {
 
     public static void main(String[] args) {
-        ConnectionSession sess = new ConnectionSession();
-        Connection conn = sess.getActiveConnection();
-        try {
-            sess.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ConnectionFactory.getInstance();
 
         Scanner scan = new Scanner(System.in);
 
