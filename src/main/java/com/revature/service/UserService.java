@@ -19,8 +19,7 @@ public abstract class UserService {
         User user = new User(id, username, password);
         users.put(username, user);
         // add to database
-        PreparedUser prep = new PreparedUser();
-        prep.createLogin(id,username,password);
+        PreparedUser.createLogin(id,username,password);
     }
 
     public static void loadUser(int id, String username, String password){

@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //hitting the membership table
-public class PreparedUser {
+public abstract class PreparedUser {
 
-    public int createLogin(int id, String username, String password){
+    public static int createLogin(int id, String username, String password){
         try (ConnectionSession sess = new ConnectionSession()) {
             Connection conn = sess.getActiveConnection();
             PreparedStatement ps = conn.prepareStatement("insert into login values (?,?,?)");
@@ -26,7 +26,7 @@ public class PreparedUser {
         }
     }
 
-    public int createCustomer(int id){
+    public static int createCustomer(int id){
         try (ConnectionSession sess = new ConnectionSession()) {
             Connection conn = sess.getActiveConnection();
             PreparedStatement ps = conn.prepareStatement("insert into customer values (?)");
@@ -40,7 +40,7 @@ public class PreparedUser {
         }
     }
 
-    public String findById(Integer id) {
+    public static String findById(Integer id) {
         /*String sql = "select * from membership_type where id=?";
         try (
                 ConnectionSession sess = new ConnectionSession();
@@ -63,11 +63,11 @@ public class PreparedUser {
         return null;
     }
 
-    public int update(String s) {
+    public static int update(String s) {
         return 0;
     }
 
-    public int delete(Integer id) {
+    public static int delete(Integer id) {
         return 0;
     }
 }
