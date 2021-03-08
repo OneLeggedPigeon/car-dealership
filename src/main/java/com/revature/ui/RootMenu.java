@@ -4,6 +4,7 @@ import com.revature.db.PreparedUser;
 import com.revature.service.MenuService;
 import com.revature.service.UserService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public abstract class RootMenu {
@@ -34,13 +35,18 @@ public abstract class RootMenu {
 
     private static void newUser(Scanner scan){
         String username;
-        PreparedUser prep = new PreparedUser();
         boolean dupe;
         boolean exit = false;
         do {
             System.out.println("provide username");
             username = scan.nextLine();
-            dupe = UserService.isUsernameDupe(username);
+            try {
+                dupe = UserService.isUsernameDupe(username);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                exit = true;
+                break;
+            }
             if (dupe){
                 System.out.println("that username is already in use");
                 System.out.println("try again?");
@@ -53,10 +59,7 @@ public abstract class RootMenu {
         if(!exit) {
             System.out.println("provide password");
             String password = scan.nextLine();
-            // TODO: add the new user to a database
             UserService.makeUser(username, password);
-            prep.create(username,password);
-            // TODO: check if user was created
             System.out.println("account creation successful");
         }
     }
