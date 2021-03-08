@@ -1,6 +1,7 @@
 package com.revature;
 
 import com.revature.config.DBProperties;
+import com.revature.db.*;
 import com.revature.db.UserJDBC;
 import com.revature.ui.*;
 import com.revature.collections.*;
@@ -14,7 +15,13 @@ import java.util.Scanner;
 public class Driver {
 
     public static void main(String[] args) {
-        Connection c = DBProperties.getConnection("dev");
+        ConnectionSession sess = new ConnectionSession();
+        sess.getActiveConnection();
+        try {
+            sess.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Scanner scan = new Scanner(System.in);
 
