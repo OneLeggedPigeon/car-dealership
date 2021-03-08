@@ -1,6 +1,5 @@
 package com.revature.db;
 
-import com.revature.config.DBProperties;
 import com.revature.model.User;
 
 import java.sql.*;

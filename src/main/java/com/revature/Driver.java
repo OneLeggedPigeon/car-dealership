@@ -1,6 +1,5 @@
 package com.revature;
 
-import com.revature.config.DBProperties;
 import com.revature.db.*;
 import com.revature.db.UserJDBC;
 import com.revature.ui.*;
@@ -16,7 +15,7 @@ public class Driver {
 
     public static void main(String[] args) {
         ConnectionSession sess = new ConnectionSession();
-        sess.getActiveConnection();
+        Connection conn = sess.getActiveConnection();
         try {
             sess.close();
         } catch (Exception e) {
