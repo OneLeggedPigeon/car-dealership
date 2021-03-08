@@ -19,4 +19,24 @@ public abstract class SQLQueryService {
 
         return null;
     }
+
+    /*
+     * returns: first value in the column, or -1 if unsuccessful.
+    */
+    public static int intQuery(String statement, String columnLable){
+        ResultSet rs = SQLQueryService.query(statement);
+        int result = -1;
+        try {
+            if(rs.next()) {
+                result = rs.getInt(columnLable);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static int idQuery(String username){
+        return intQuery("select user_id from login where username = '" +username+"'","user_id");
+    }
 }

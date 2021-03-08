@@ -26,13 +26,13 @@ public  class UpdateService {
             while(rs.next()){
                 int id = rs.getInt("user_id");
                 if(eValid && id == ers.getInt("user_id")){
-                    UserService.loadEmployee(rs.getString("username"),rs.getString("password"));
+                    UserService.loadEmployee(id,rs.getString("username"),rs.getString("password"));
                     eValid = ers.next();
                 } else if (cValid && id == crs.getInt("user_id")){
-                    UserService.loadCustomer(rs.getString("username"),rs.getString("password"));
+                    UserService.loadCustomer(id,rs.getString("username"),rs.getString("password"));
                     cValid = crs.next();
                 } else {
-                    UserService.loadUser(rs.getString("username"),rs.getString("password"));
+                    UserService.loadUser(id,rs.getString("username"),rs.getString("password"));
                 }
             }
         } catch (SQLException e) {

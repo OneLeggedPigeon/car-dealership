@@ -2,8 +2,8 @@ package com.revature.model;
 
 public class Employee extends User{
 
-    public Employee(String username, String password) {
-        super(username,password);
+    public Employee(int id, String username, String password) {
+        super(id,username,password);
     }
 
     public UserType getUserType(){

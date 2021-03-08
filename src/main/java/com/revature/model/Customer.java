@@ -7,8 +7,8 @@ public class Customer extends User{
     private FlexArray<Offer> offers;
     private FlexArray<Payment> payments;
 
-    public Customer(String username, String password) {
-        super(username,password);
+    public Customer(int id, String username, String password) {
+        super(id,username,password);
     }
 
     public UserType getUserType(){
