@@ -8,9 +8,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DBProperties {
+public abstract class DBProperties {
 
-    public Connection getConnection(String profile) {
+    public static Connection getConnection(String profile) {
         Properties props = new Properties();
         try {
             props.load(new FileReader(new File("src/main/resources/db.properties")));
@@ -33,7 +33,7 @@ public class DBProperties {
         String[] somethings = s.split("\\.");
         System.out.println(somethings[1]);
 
-        System.out.println(new DBProperties().getConnection("dev").isValid(1000));
+        System.out.println(DBProperties.getConnection("dev"));
     }
 
 }
