@@ -1,6 +1,7 @@
 package com.revature.model;
 
 public class Car {
+    private int id;
     private String name;
 
     public Car(String name){
@@ -9,6 +10,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public int getID() {
+        return id;
     }
 
     public void setName(String name) {
