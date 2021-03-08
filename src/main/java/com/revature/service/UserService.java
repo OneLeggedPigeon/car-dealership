@@ -23,6 +23,21 @@ public abstract class UserService {
         prep.create(username,password);
     }
 
+    public static void loadUser(String username, String password){
+        User user = new User(username, password);
+        users.put(username, user);
+    }
+
+    public static void loadCustomer(String username, String password){
+        Customer customer = new Customer(username, password);
+        users.put(username, customer);
+    }
+
+    public static void loadEmployee(String username, String password){
+        Employee employee = new Employee(username, password);
+        users.put(username, employee);
+    }
+
     // Change a User to a Customer
     public static Customer registerUser(User u){
         Customer c = new Customer(u.getUsername(),u.getPassword());
