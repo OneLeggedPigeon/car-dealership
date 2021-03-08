@@ -85,7 +85,7 @@ public class HashMap<K,V>{
             Node<K, V> temp;
             temp = buckets[index];
 
-            while(temp.key != key && temp.next != null){
+            while(!temp.key.equals(key) && temp.next != null){
                 temp = temp.next;
             }
             if(temp.key.equals(key)) {
