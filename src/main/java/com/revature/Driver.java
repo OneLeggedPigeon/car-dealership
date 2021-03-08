@@ -2,6 +2,7 @@ package com.revature;
 
 import com.revature.db.*;
 import com.revature.ui.*;
+//import org.apache.logging.log4j.*;
 
 import java.util.Scanner;
 
