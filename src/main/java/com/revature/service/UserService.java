@@ -80,12 +80,24 @@ public abstract class UserService {
         return null;
     }
 
-    public static User getUserByID(int id) {
+    public static User getUserById(int id) {
         for(User u : users.toArray()){
             if(u.getID() == id){
                 return u;
             }
         }
         return null;
+    }
+
+    public static Customer getCustomerById(int id) {
+        User result = getUserById(id);
+        assert result instanceof Customer;
+        return (Customer) result;
+    }
+
+    public static Employee getEmployeeById(int id) {
+        User result = getUserById(id);
+        assert result instanceof Employee;
+        return (Employee) result;
     }
 }
