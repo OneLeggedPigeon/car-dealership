@@ -42,7 +42,7 @@ public abstract class UserService {
         Customer c = new Customer(u.getID(), u.getUsername(), u.getPassword());
         users.put(u.getUsername(), c);
         // add to database
-
+        PreparedUser.createCustomer(u.getID());
         return c;
     }
 
