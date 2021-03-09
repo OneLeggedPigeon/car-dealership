@@ -1,5 +1,7 @@
 package com.revature.db;
 
+import com.revature.model.Car;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -21,7 +23,22 @@ public abstract class PreparedCar {
         }
     }
 
-    // TODO: add customers id to car row in db to indicate ownership
+    // set in_lot in DB to arg: inLot
+    public static int updateInLot(int id, boolean inLot){
+        try (ConnectionSession sess = new ConnectionSession()) {
+            Connection conn = sess.getActiveConnection();
+            PreparedStatement ps = conn.prepareStatement("UPDATE car SET in_lot=? WHERE car_id=?");
+            ps.setBoolean(1, inLot);
+            ps.setInt(2, id);
+            int i = ps.executeUpdate();
+            ps.close();
+            return i;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    // TODO: add customers id to car row in DB to indicate ownership
     public static int purchaseCar(int carID, int customerID){
         return -1;
     }
