@@ -1,26 +1,39 @@
 package com.revature.model;
 
+import com.revature.service.CarService;
+
 public class Car {
     private int id;
-    private String name;
+    private String model;
+    private Customer owner;
 
-    public Car(String name){
-        this.name = name;
+    public Car(int id, String model){
+        this.id = id;
+        this.model = model;
     }
 
-    public String getName() {
-        return name;
+    public Car(int id, String model, Customer owner){
+        this.id = id;
+        this.model = model;
+        this.owner = owner;
+    }
+
+    public boolean inLot(){
+        return Lot.getInstance().inLot(id);
+    }
+    public String getModel() {
+        return model;
     }
 
     public int getID() {
         return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    /*public void setModel(String model) {
+        this.model = model;
+    }*/
 
     public String toString(){
-       return id + ": " + name;
+       return id + ": " + model;
     }
 }

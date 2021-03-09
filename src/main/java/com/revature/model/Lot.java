@@ -1,19 +1,29 @@
 package com.revature.model;
 
-import com.revature.collections.FlexArray;
+import com.revature.collections.HashMap;
+import com.revature.db.service.UpdateService;
 
-public abstract class Lot {
-    private FlexArray<Car> cars = new FlexArray<Car>();
+// Singlton
+public class Lot {
 
-    public void addCar(Car c){
-        cars.add(c);
+    private static HashMap<Integer,Car> cars = new HashMap<Integer,Car>();
+
+    private static Lot instance;
+
+    // TODO: initialize Lot
+    private Lot(){
+        
     }
 
-    public void addCar(Car[] c){
-        cars.add(c);
+    public static Lot getInstance() {
+        if (instance == null) {
+            instance = new Lot();
+        }
+        return instance;
     }
 
-    public Car[] getCars(){
-        return (Car[]) cars.toArray();
+    // TODO
+    public boolean inLot(int id) {
+        return false;
     }
 }

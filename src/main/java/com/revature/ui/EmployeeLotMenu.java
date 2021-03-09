@@ -18,7 +18,6 @@ public abstract class EmployeeLotMenu {
         System.out.println("===Welcome to the Employee Car Lot===");
         boolean back;
         do {
-
             back = query(scan, user);
         } while(!back);
     }
@@ -46,10 +45,10 @@ public abstract class EmployeeLotMenu {
     }
 
     private static void remove(Scanner scan) {
-
+        // show cars not in lot
     }
 
     private static void add(Scanner scan) {
-
+        // show cars in lot
     }
 }
