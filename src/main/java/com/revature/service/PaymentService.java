@@ -21,8 +21,4 @@ public abstract class PaymentService {
         result = (price*(1+salesTax)-downPayment)*r*Math.pow(1+r,term)/(Math.pow(1+r,term)-1);
         return result;
     }
-
-    public static void attachOffer(int input, Customer customer, Car car) {
-        Offer offer = new Offer(input, customer, car);
-    }
 }
