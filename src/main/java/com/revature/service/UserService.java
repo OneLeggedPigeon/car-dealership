@@ -9,6 +9,7 @@ import com.revature.collections.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// Holds all Users, Customers, Employees locally
 public abstract class UserService {
 
     //ArrayList of all the usernames that have been instantiated

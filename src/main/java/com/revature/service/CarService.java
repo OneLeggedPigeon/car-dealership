@@ -4,6 +4,7 @@ import com.revature.collections.FlexArray;
 import com.revature.collections.HashMap;
 import com.revature.model.Car;
 
+// Holds all Cars locally
 public abstract class CarService {
     private static HashMap<Integer,Car> cars = new HashMap<Integer,Car>();
 
