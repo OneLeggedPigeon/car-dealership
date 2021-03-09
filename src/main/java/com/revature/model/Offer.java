@@ -28,4 +28,8 @@ public class Offer {
     public Car getCar() {
         return car;
     }
+
+    public String toString(){
+        return "id: "+id+" "+customer.getUsername()+" offers $"+amount+" for "+car.getModel();
+    }
 }

@@ -61,13 +61,13 @@ public abstract class CarService {
 
     // returns entries for all unowned cars not in lot
     public static String toStringCarsUnownedNoLot(){
-        return getEntries(unownedNoLotCarArray());
+        return getEntries(arrayUnownedNoLotCar());
     }
 
     // returns entries for all cars
     public static String toStringCarsUnowned(){
         StringBuilder result = new StringBuilder(System.lineSeparator());
-        for (Car car : unownedCarArray()) {
+        for (Car car : arrayUnownedCary()) {
             String s;
             if(car.inLot()){
                 s = "in lot|";
@@ -81,6 +81,10 @@ public abstract class CarService {
                     .append(System.lineSeparator());
         }
         return result.toString();
+    }
+
+    public static String toStringCarsOffer() {
+        return getEntries(arrayOfferCar());
     }
 
     // returns entries for all cars
@@ -106,12 +110,12 @@ public abstract class CarService {
     }
 
     // are there a car in the lot?
-    public static boolean lotCarExists() {
+    public static boolean existsLotCar() {
         return !Lot.getInstance().isEmpty();
     }
 
     // are there any unowned cars outside the lot?
-    public static boolean unownedNoLotCarExists() {
+    public static boolean existsUnownedNoLotCar() {
         for (Car car : cars.toArray()){
             if(!car.inLot() && !car.getOwner().isPresent()){
                 return true;
@@ -120,8 +124,18 @@ public abstract class CarService {
         return false;
     }
 
+    // are there any unowned cars with offers?
+    public static boolean existsCarWithOffer() {
+        for (Car car : arrayUnownedCary()){
+            if(!car.getOffers().isEmpty()){
+                return true;
+            }
+        }
+        return false;
+    }
 
-    public static Car[] unownedCarArray() {
+
+    public static Car[] arrayUnownedCary() {
         FlexArray<Car> result = null;
         try {
             result = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
@@ -137,7 +151,23 @@ public abstract class CarService {
         return result.toArray();
     }
 
-    public static Car[] unownedNoLotCarArray() {
+    public static Car[] arrayOfferCar() {
+        FlexArray<Car> result = null;
+        try {
+            result = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert result != null;
+        for (Car car : cars.toArray()){
+            if(!car.getOwner().isPresent() && !car.getOffers().isEmpty()){
+                result.add(car);
+            }
+        }
+        return result.toArray();
+    }
+
+    public static Car[] arrayUnownedNoLotCar() {
         FlexArray<Car> result = null;
         try {
             result = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
@@ -152,6 +182,7 @@ public abstract class CarService {
         }
         return result.toArray();
     }
+
 
     public static Car getCarById(int id) {
         for(Car c : cars.toArray()){

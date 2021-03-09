@@ -134,11 +134,11 @@ public class FlexArray<E>{
 
     public String toString() {
         String[] strings = toStringArray();
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (String s : strings) {
-            result = result.concat(s + System.lineSeparator());
+            result = result.append(s).append(System.lineSeparator());
         }
-        return result;
+        return result.toString();
     }
 
     public E[] toArray() {

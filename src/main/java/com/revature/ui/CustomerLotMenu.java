@@ -41,7 +41,7 @@ public abstract class CustomerLotMenu {
     }
 
     private static void select(Scanner scan, Customer customer) {
-        if (CarService.lotCarExists()) {
+        if (CarService.existsLotCar()) {
             System.out.println("which car?");
             int input = MenuService.queryInt(scan, CarService.toStringCarsLot(), "car_id");
             assert input >= -1;

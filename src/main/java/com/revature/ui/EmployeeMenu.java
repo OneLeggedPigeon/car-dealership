@@ -18,15 +18,16 @@ public abstract class EmployeeMenu{
     public static void showMenu(Scanner scan, User user){
         System.out.println("===Welcome "+user.getUserType()+" "+user+"===");
         boolean logout;
+        assert user instanceof Employee;
         do {
-            logout = query(scan, user);
+            logout = query(scan, (Employee) user);
         } while(!logout);
     }
 
-    protected static boolean query(Scanner scan, User user) {
+    protected static boolean query(Scanner scan, Employee employee) {
         switch (MenuService.queryMenu(scan, options)) {
             case "lot":
-                EmployeeLotMenu.showMenu(scan, user);
+                EmployeeLotMenu.showMenu(scan, employee);
                 break;
             case "payments":
                 //TODO:
