@@ -11,7 +11,7 @@ public class ConnectionSession implements AutoCloseable {
         for(int i = 0; i< com.revature.db.ConnectionFactory.MAX_CONNECTIONS; i++){
             Connection conn = com.revature.db.ConnectionFactory.getInstance().getConnectionPool()[i];
             if(conn != null){
-                System.out.println("gathering connection id: " + i + " to give to the object");
+                //System.out.println("gathering connection id: " + i + " to give to the object");
                 activeConnection = conn;
                 com.revature.db.ConnectionFactory.getInstance().getConnectionPool()[i] = null;
                 locationIndex = i;
@@ -23,7 +23,7 @@ public class ConnectionSession implements AutoCloseable {
 
     @Override
     public void close() throws Exception {
-        System.out.println("closing the session and giving connection id: " + locationIndex + " back to the connection pool");
+        //System.out.println("closing the session and giving connection id: " + locationIndex + " back to the connection pool");
         com.revature.db.ConnectionFactory.getInstance().getConnectionPool()[locationIndex]=activeConnection;
         activeConnection = null;
         locationIndex = -1;
