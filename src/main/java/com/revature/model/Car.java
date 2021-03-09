@@ -55,7 +55,7 @@ public class Car {
         return model;
     }
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 
