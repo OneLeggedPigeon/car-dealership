@@ -1,5 +1,6 @@
 package com.revature.ui;
 
+import com.revature.model.Customer;
 import com.revature.model.User;
 import com.revature.service.MenuService;
 
@@ -30,8 +31,7 @@ public abstract class CustomerMenu{
                 System.out.println("owned");
                 break;
             case "lot":
-                //TODO:
-                System.out.println("lot");
+                CustomerLotMenu.showMenu(scan, user);
                 break;
             case "payments":
                 //TODO:
