@@ -12,36 +12,45 @@ import java.sql.SQLException;
 // Holds all Users, Customers, Employees locally
 public abstract class UserService {
 
-    //ArrayList of all the usernames that have been instantiated
-    static HashMap<String,User> users = new HashMap<String,User>();
+    //FlexArray of all users
+    static FlexArray<User> users;
+
+    static {
+        try {
+            users = new FlexArray<User>(Class.forName("com.revature.model.User"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     static User activeUser = null;
 
     public static void makeUser(int id, String username, String password){
         User user = new User(id, username, password);
-        users.put(username, user);
+        users.add(user);
         // add to database
         PreparedUser.createLogin(id,username,password);
     }
 
     public static void loadUser(int id, String username, String password){
         User user = new User(id, username, password);
-        users.put(username, user);
+        users.add(user);
     }
 
     public static void loadCustomer(int id, String username, String password){
         Customer customer = new Customer(id, username, password);
-        users.put(username, customer);
+        users.add(customer);
     }
 
     public static void loadEmployee(int id, String username, String password){
         Employee employee = new Employee(id, username, password);
-        users.put(username, employee);
+        users.add(employee);
     }
 
     // Change a User to a Customer
     public static Customer registerUser(User u){
         Customer c = new Customer(u.getID(), u.getUsername(), u.getPassword());
-        users.put(u.getUsername(), c);
+        users.add(c);
         // add to database
         PreparedUser.createCustomer(u.getID());
         return c;
@@ -61,12 +70,22 @@ public abstract class UserService {
         }
     }
 
-    //returns null if name not found
+    // returns null if name not found
     public static User getUserByUsername(String username) {
-        return users.get(username);
+        for(User u : users.toArray()){
+            if(u.getUsername().equals(username)){
+                return u;
+            }
+        }
+        return null;
     }
 
-    public static User getUserByID() {
+    public static User getUserByID(int id) {
+        for(User u : users.toArray()){
+            if(u.getID() == id){
+                return u;
+            }
+        }
         return null;
     }
 }

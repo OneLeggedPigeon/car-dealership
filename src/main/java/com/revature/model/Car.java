@@ -18,9 +18,14 @@ public class Car {
         this.owner = owner;
     }
 
-    public boolean inLot(){
-        return Lot.getInstance().inLot(id);
+    public int getId() {
+        return id;
     }
+
+    public boolean inLot(){
+        return CarService.inLot(id);
+    }
+
     public String getModel() {
         return model;
     }
@@ -29,11 +34,16 @@ public class Car {
         return id;
     }
 
-    /*public void setModel(String model) {
-        this.model = model;
-    }*/
+    public Customer getOwner() {
+        return owner;
+    }
 
     public String toString(){
        return id + ": " + model;
     }
+
+    /*public void setModel(String model) {
+        this.model = model;
+    }*/
+
 }

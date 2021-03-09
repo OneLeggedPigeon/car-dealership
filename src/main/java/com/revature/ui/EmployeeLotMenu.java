@@ -1,6 +1,7 @@
 package com.revature.ui;
 
 import com.revature.model.Employee;
+import com.revature.model.Lot;
 import com.revature.model.User;
 import com.revature.service.MenuService;
 
@@ -26,7 +27,6 @@ public abstract class EmployeeLotMenu {
         switch (MenuService.queryMenu(scan, options)) {
             case "add":
                 add(scan);
-                System.out.println("lot");
                 break;
             case "remove":
                 remove(scan);
@@ -44,11 +44,11 @@ public abstract class EmployeeLotMenu {
         return false;
     }
 
-    private static void remove(Scanner scan) {
-        // show cars not in lot
+    private static void add(Scanner scan) {
+        System.out.println(Lot.getInstance().toString());
     }
 
-    private static void add(Scanner scan) {
-        // show cars in lot
+    private static void remove(Scanner scan) {
+        // show cars not in lot
     }
 }

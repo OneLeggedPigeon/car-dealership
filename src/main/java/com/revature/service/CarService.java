@@ -9,7 +9,17 @@ import com.revature.model.User;
 
 // Holds all Cars locally
 public abstract class CarService {
-    private static HashMap<Integer,Car> cars = new HashMap<Integer,Car>();
+
+    //FlexArray of all cars
+    private static FlexArray<Car> cars;
+
+    static {
+        try {
+            cars = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static Car makeCar(int id, String model){
         return null;
@@ -28,24 +38,26 @@ public abstract class CarService {
             if(ownerID == -1){
                 car = new Car(id, model);
             } else {
-                User cust = UserService.getUserByID();
-                assert cust instanceof Customer;
-                car = new Car(id, model, (Customer) cust);
+                User customer = UserService.getUserByID(ownerID);
+                assert customer instanceof Customer;
+                car = new Car(id, model, (Customer) customer);
             }
-            cars.put(id,car);
-            if(inLot){
+            cars.add(car);
+            // redundant check that an owned car is not in the lot
+            if(inLot && car.getOwner() == null){
                 Lot.getInstance().addCar(car);
             }
         }
     }
 
-    // TODO: check cars for id
     public static boolean inLot(int id) {
-        return false;
+        return Lot.getInstance().inLot(id);
     }
 
+    /*
     public void addCar(Car c){
         cars.put(c.getID(),c);
         // TODO: also add to db
     }
+    */
 }

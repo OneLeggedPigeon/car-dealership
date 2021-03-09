@@ -1,19 +1,22 @@
 package com.revature.model;
 
-import com.revature.collections.HashMap;
-import com.revature.db.service.UpdateService;
+import com.revature.collections.FlexArray;
 
-// Singlton
+// Singleton
 public class Lot {
 
-    private static HashMap<Integer,Car> cars = new HashMap<Integer,Car>();
+    //FlexArray of all the cars in the Lot
+    private static FlexArray<Car> cars;
+
+    static {
+        try {
+            cars = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     private static Lot instance;
-
-    // TODO: initialize Lot
-    private Lot(){
-        
-    }
 
     public static Lot getInstance() {
         if (instance == null) {
@@ -22,20 +25,27 @@ public class Lot {
         return instance;
     }
 
-    // TODO
+    // checks if arg: id matches one of the values in this.cars
     public boolean inLot(int id) {
-        return false;
+        return (cars.get(id) != null);
     }
 
     public void addCar(Car car) {
-        cars.put(car.getID(),car);
-    }
-
-    public void removeCar(int id) {
-        cars.remove(id);
+        cars.add(car);
     }
 
     public void removeCar(Car car) {
-        cars.remove(car.getID());
+        cars.remove(car);
+    }
+
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        for (Car car : cars.toArray()){
+            result.append(car.getId())
+                    .append(": ")
+                    .append(car.getModel())
+                    .append(System.lineSeparator());
+        }
+        return result.toString();
     }
 }
