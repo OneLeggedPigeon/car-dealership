@@ -1,14 +1,13 @@
-package com.revature;
+package com.revature.ui;
 
-import com.revature.db.*;
+import com.revature.db.ConnectionFactory;
 import com.revature.db.service.UpdateService;
-import com.revature.ui.*;
-//import org.apache.logging.log4j.*;
+import com.revature.service.UserService;
 
+import java.util.Objects;
 import java.util.Scanner;
 
-public class Driver {
-
+public class UITest {
     public static void main(String[] args) {
         // Open Connections
         ConnectionFactory.getInstance();
@@ -17,6 +16,7 @@ public class Driver {
 
         Scanner scan = new Scanner(System.in);
 
-        RootMenu.showMenu(scan);
+        //TESTING EMPLOYEE MENU
+        EmployeeMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserByUsername("Nate")));
     }
 }
