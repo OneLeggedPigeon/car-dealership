@@ -107,6 +107,11 @@ public abstract class CarService {
         return cars.isEmpty();
     }
 
+    // are there a car in the lot?
+    public static boolean lotCarExists() {
+        return !Lot.getInstance().isEmpty();
+    }
+
     // are there any unowned cars outside the lot?
     public static boolean unownedNoLotCarExists() {
         for (Car car : cars.toArray()){

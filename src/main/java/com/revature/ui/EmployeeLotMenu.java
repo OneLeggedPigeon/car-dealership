@@ -70,7 +70,7 @@ public abstract class EmployeeLotMenu {
     private static void remove(Scanner scan) {
         Lot lot = Lot.getInstance();
         boolean back = false;
-        while(!back && !lot.isEmpty()) {
+        while(!back && CarService.lotCarExists()) {
             int input = MenuService.queryInt(scan, CarService.toStringCarsLot(),"car_id");
             assert input >= -1;
             if(input > -1){
