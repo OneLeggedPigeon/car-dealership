@@ -26,4 +26,16 @@ public class Lot {
     public boolean inLot(int id) {
         return false;
     }
+
+    public void addCar(Car car) {
+        cars.put(car.getID(),car);
+    }
+
+    public void removeCar(int id) {
+        cars.remove(id);
+    }
+
+    public void removeCar(Car car) {
+        cars.remove(car.getID());
+    }
 }

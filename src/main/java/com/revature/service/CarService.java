@@ -3,6 +3,9 @@ package com.revature.service;
 import com.revature.collections.FlexArray;
 import com.revature.collections.HashMap;
 import com.revature.model.Car;
+import com.revature.model.Customer;
+import com.revature.model.Lot;
+import com.revature.model.User;
 
 // Holds all Cars locally
 public abstract class CarService {
@@ -20,15 +23,19 @@ public abstract class CarService {
      *  model: name of the car
      */
     public static void loadCar(int id, int ownerID, boolean inLot, String model){
-        Car car;
-        if(ownerID == -1){
-            //car = new Car();
-        } else if (ownerID >=0){
-            //car = new Car();
-        }
-        //cars.put((Integer) id,)
-        if(inLot){
-
+        if (ownerID >= -1){
+            Car car;
+            if(ownerID == -1){
+                car = new Car(id, model);
+            } else {
+                User cust = UserService.getUserByID();
+                assert cust instanceof Customer;
+                car = new Car(id, model, (Customer) cust);
+            }
+            cars.put(id,car);
+            if(inLot){
+                Lot.getInstance().addCar(car);
+            }
         }
     }
 

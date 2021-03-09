@@ -65,4 +65,8 @@ public abstract class UserService {
     public static User getUserByUsername(String username) {
         return users.get(username);
     }
+
+    public static User getUserByID() {
+        return null;
+    }
 }
