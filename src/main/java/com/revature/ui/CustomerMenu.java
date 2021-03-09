@@ -19,19 +19,20 @@ public abstract class CustomerMenu{
     public static void showMenu(Scanner scan, User user){
         System.out.println("===Welcome "+user.getUserType()+" "+user+"===");
         boolean logout;
+        assert user instanceof Customer;
         do {
-            logout = query(scan, user);
+            logout = query(scan, (Customer) user);
         } while(!logout);
     }
 
-    protected static boolean query(Scanner scan, User user) {
+    protected static boolean query(Scanner scan, Customer customer) {
         switch (MenuService.queryMenu(scan, options)) {
             case "owned":
                 //TODO:
                 System.out.println("owned");
                 break;
             case "lot":
-                CustomerLotMenu.showMenu(scan, user);
+                CustomerLotMenu.showMenu(scan, customer);
                 break;
             case "payments":
                 //TODO:

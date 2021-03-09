@@ -1,6 +1,7 @@
 package com.revature.ui;
 
 import com.revature.model.Car;
+import com.revature.model.Customer;
 import com.revature.model.Lot;
 import com.revature.model.User;
 import com.revature.service.CarService;
@@ -15,19 +16,19 @@ public abstract class CustomerLotMenu {
             "exit"
     };
 
-    public static void showMenu(Scanner scan, User user){
+    public static void showMenu(Scanner scan, Customer customer){
         System.out.println("===Welcome to the Car Lot, CUSTOMER===");
         boolean back;
         do {
-            back = query(scan, user);
+            back = query(scan, customer);
         } while(!back);
     }
 
-    protected static boolean query(Scanner scan, User user) {
+    protected static boolean query(Scanner scan, Customer customer) {
         System.out.println(CarService.toStringCarsLot());
         switch (MenuService.queryMenu(scan, options)) {
             case "select":
-                select(scan, user);
+                select(scan, customer);
                 break;
             case "back":
                 return true;
@@ -40,7 +41,7 @@ public abstract class CustomerLotMenu {
         return false;
     }
 
-    private static void select(Scanner scan, User user) {
+    private static void select(Scanner scan, Customer customer) {
         if (CarService.lotCarExists()) {
             System.out.println("which car?");
             int input = MenuService.queryInt(scan, CarService.toStringCarsLot(), "car_id");
@@ -49,7 +50,7 @@ public abstract class CustomerLotMenu {
                 for (Car car : Lot.getInstance().toArray()) {
                     if (car.getID() == input) {
 
-                        CustomerCarMenu.showMenu(scan, user, car);
+                        CustomerCarMenu.showMenu(scan, customer, car);
                         break;
                     }
                 }

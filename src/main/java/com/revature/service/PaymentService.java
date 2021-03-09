@@ -1,5 +1,10 @@
 package com.revature.service;
 
+import com.revature.model.Car;
+import com.revature.model.Customer;
+import com.revature.model.Offer;
+import com.revature.model.User;
+
 public abstract class PaymentService {
     private static final double defaultSalesTax = .10;
     private static final double defaultDownPayment = 0;
@@ -15,5 +20,9 @@ public abstract class PaymentService {
         double r = api/12;
         result = (price*(1+salesTax)-downPayment)*r*Math.pow(1+r,term)/(Math.pow(1+r,term)-1);
         return result;
+    }
+
+    public static void attachOffer(int input, Customer customer, Car car) {
+        Offer offer = new Offer(input, customer, car);
     }
 }

@@ -1,31 +1,34 @@
 package com.revature.ui;
 
 import com.revature.model.Car;
+import com.revature.model.Customer;
 import com.revature.model.User;
 import com.revature.service.CarService;
 import com.revature.service.MenuService;
+import com.revature.service.PaymentService;
 
 import java.util.Scanner;
 
 public abstract class CustomerCarMenu {
     protected static String[] options = new String[]{
-            "select",
+            "offer",
             "back",
             "exit"
     };
 
-    public static void showMenu(Scanner scan, User user, Car car){
-        System.out.println("=== ===");
+    public static void showMenu(Scanner scan, Customer customer, Car car){
+        System.out.println("==="+car.getModel()+"===");
         boolean back;
         do {
-            back = query(scan, user);
+            back = query(scan, customer, car);
         } while(!back);
     }
 
-    protected static boolean query(Scanner scan, User user) {
+    protected static boolean query(Scanner scan, Customer customer, Car car) {
         System.out.println(CarService.toStringCarsLot());
         switch (MenuService.queryMenu(scan, options)) {
-            case "select":
+            case "offer":
+                offer(scan, customer, car);
                 break;
             case "back":
                 return true;
@@ -36,5 +39,14 @@ public abstract class CustomerCarMenu {
                 System.out.println("This shouldn't show up.");
         }
         return false;
+    }
+
+    private static void offer(Scanner scan, Customer customer, Car car) {
+        System.out.println("how much?");
+        int input = MenuService.queryInt(scan, car.toString(), "offer amount", 1);
+        assert input >= 0;
+        if(input >=1){
+            PaymentService.attachOffer(input, customer, car);
+        }
     }
 }
