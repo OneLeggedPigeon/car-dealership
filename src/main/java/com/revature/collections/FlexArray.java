@@ -153,4 +153,9 @@ public class FlexArray<E>{
         }
         return false;
     }
+
+    // sets elements to an empty array
+    public void Clear() {
+        elements = array(0);
+    }
 }
