@@ -63,7 +63,7 @@ public abstract class EmployeeLotMenu {
             }
         }
         if(!CarService.unownedNoLotCarExists()){
-            System.out.println("lot is empty");
+            System.out.println("no stored cars");
         }
     }
 

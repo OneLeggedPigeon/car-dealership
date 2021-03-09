@@ -77,7 +77,7 @@ public abstract class CarService {
                 s = "stowed|";
             }
             result.append(s)
-                    .append(car.getId())
+                    .append(car.getID())
                     .append(": ")
                     .append(car.getModel())
                     .append(System.lineSeparator());
@@ -93,7 +93,7 @@ public abstract class CarService {
     private static String getEntries(Car[] cars) {
         StringBuilder result = new StringBuilder(System.lineSeparator());
         for (Car car : cars) {
-            result.append(car.getId())
+            result.append(car.getID())
                     .append(": ")
                     .append(car.getModel())
                     .append(System.lineSeparator());

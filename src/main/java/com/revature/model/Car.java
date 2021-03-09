@@ -20,10 +20,6 @@ public class Car {
         this.owner = owner;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public boolean inLot(){
         return CarService.inLot(this);
     }
