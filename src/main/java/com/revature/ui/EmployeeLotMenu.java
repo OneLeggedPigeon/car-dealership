@@ -6,33 +6,35 @@ import com.revature.service.MenuService;
 
 import java.util.Scanner;
 
-public abstract class EmployeeMenu{
+public abstract class EmployeeLotMenu {
     protected static String[] options = new String[]{
-            "lot",
-            "payments",
-            "logout",
+            "add",
+            "remove",
+            "back",
             "exit"
     };
 
-    //Loop through user options until logout
     public static void showMenu(Scanner scan, User user){
-        System.out.println("===Welcome "+user.getUserType()+" "+user+"===");
-        boolean logout;
+        System.out.println("===Welcome to the Employee Car Lot===");
+        boolean back;
         do {
-            logout = query(scan, user);
-        } while(!logout);
+
+            back = query(scan, user);
+        } while(!back);
     }
 
     protected static boolean query(Scanner scan, User user) {
         switch (MenuService.queryMenu(scan, options)) {
-            case "lot":
-                EmployeeLotMenu.showMenu(scan, user);
+            case "add":
+                add(scan);
+                System.out.println("lot");
                 break;
-            case "payments":
+            case "remove":
+                remove(scan);
                 //TODO:
                 System.out.println("payments");
                 break;
-            case "logout":
+            case "back":
                 return true;
             case "exit":
                 System.exit(1);
@@ -41,5 +43,13 @@ public abstract class EmployeeMenu{
                 System.out.println("This shouldn't show up.");
         }
         return false;
+    }
+
+    private static void remove(Scanner scan) {
+
+    }
+
+    private static void add(Scanner scan) {
+
     }
 }
