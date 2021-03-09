@@ -24,7 +24,6 @@ public abstract class CustomerCarMenu {
     }
 
     protected static boolean query(Scanner scan, Customer customer, Car car) {
-        System.out.println(CarService.toStringCarsLot());
         switch (MenuService.queryMenu(scan, options)) {
             case "offer":
                 offer(scan, customer, car);
@@ -42,10 +41,11 @@ public abstract class CustomerCarMenu {
 
     private static void offer(Scanner scan, Customer customer, Car car) {
         System.out.println("how much?");
-        int input = MenuService.queryInt(scan, car.toString(), "offer amount", 1);
+        int input = MenuService.queryInt(scan, car.toString(), "dollar amount", 1);
         assert input >= 0;
         if(input >=1){
             OfferService.makeOffer(input, customer, car);
+            System.out.println("offer made: $"+input);
         }
     }
 }
