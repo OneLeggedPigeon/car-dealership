@@ -20,6 +20,6 @@ public class UITest {
         //EmployeeMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserByUsername("Nate")));
 
         //TESTING CUSTOMER MENU
-        CustomerMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserByID(4)));
+        CustomerMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserById(4)));
     }
 }
