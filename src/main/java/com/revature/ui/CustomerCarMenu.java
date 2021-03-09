@@ -2,10 +2,9 @@ package com.revature.ui;
 
 import com.revature.model.Car;
 import com.revature.model.Customer;
-import com.revature.model.User;
 import com.revature.service.CarService;
 import com.revature.service.MenuService;
-import com.revature.service.PaymentService;
+import com.revature.service.OfferService;
 
 import java.util.Scanner;
 
@@ -46,7 +45,7 @@ public abstract class CustomerCarMenu {
         int input = MenuService.queryInt(scan, car.toString(), "offer amount", 1);
         assert input >= 0;
         if(input >=1){
-            PaymentService.attachOffer(input, customer, car);
+            OfferService.makeOffer(input, customer, car);
         }
     }
 }

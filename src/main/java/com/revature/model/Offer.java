@@ -4,10 +4,28 @@ public class Offer {
     private int id;
     private int amount;
     private Customer customer;
+    private Car car;
 
-    public Offer(int amount, Customer customer, Car car) {
+    public Offer(int id, int amount, Customer customer, Car car) {
+        this.id = id;
         this.amount = amount;
         this.customer = customer;
-        car.addOffer(this);
+        this.car = car;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Car getCar() {
+        return car;
     }
 }
