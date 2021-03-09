@@ -3,7 +3,6 @@ package com.revature.ui;
 import com.revature.model.Car;
 import com.revature.model.Customer;
 import com.revature.model.Lot;
-import com.revature.model.User;
 import com.revature.service.CarService;
 import com.revature.service.MenuService;
 
@@ -48,7 +47,7 @@ public abstract class CustomerLotMenu {
             assert input >= -1;
             if (input > -1) {
                 for (Car car : Lot.getInstance().toArray()) {
-                    if (car.getID() == input) {
+                    if (car.getId() == input) {
 
                         CustomerCarMenu.showMenu(scan, customer, car);
                         break;

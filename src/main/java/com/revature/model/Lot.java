@@ -2,8 +2,6 @@ package com.revature.model;
 
 import com.revature.collections.FlexArray;
 import com.revature.db.PreparedCar;
-import com.revature.service.CarService;
-import com.revature.service.UserService;
 
 // Singleton
 public class Lot {
@@ -39,12 +37,12 @@ public class Lot {
 
     public void addCar(Car car) {
         cars.add(car);
-        PreparedCar.updateInLot(car.getID(), true);
+        PreparedCar.updateInLot(car.getId(), true);
     }
 
     public void removeCar(Car car) {
         cars.remove(car);
-        PreparedCar.updateInLot(car.getID(), false);
+        PreparedCar.updateInLot(car.getId(), false);
     }
 
     public Car[] toArray(){

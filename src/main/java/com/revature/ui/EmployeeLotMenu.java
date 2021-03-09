@@ -52,7 +52,7 @@ public abstract class EmployeeLotMenu {
             assert input >= -1;
             if(input > -1){
                 for(Car car : CarService.unownedNoLotCarArray()){
-                    if(car.getID() == input){
+                    if(car.getId() == input){
                         lot.addCar(car);
                         System.out.println("added " + car.toString());
                         break;
@@ -75,7 +75,7 @@ public abstract class EmployeeLotMenu {
             assert input >= -1;
             if(input > -1){
                 for(Car car : lot.toArray()){
-                    if(car.getID() == input){
+                    if(car.getId() == input){
                         lot.removeCar(car);
                         System.out.println("removed " + car.toString());
                         break;

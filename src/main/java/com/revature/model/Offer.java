@@ -6,7 +6,7 @@ public class Offer {
     private Customer customer;
     private Car car;
 
-    public Offer(int id, int amount, Customer customer, Car car) {
+    public Offer(int id, Customer customer, Car car, int amount) {
         this.id = id;
         this.amount = amount;
         this.customer = customer;

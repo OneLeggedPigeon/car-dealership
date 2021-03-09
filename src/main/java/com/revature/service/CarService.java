@@ -6,8 +6,6 @@ import com.revature.model.Customer;
 import com.revature.model.Lot;
 import com.revature.model.User;
 
-import java.util.Optional;
-
 // Holds all Cars locally
 public abstract class CarService {
 
@@ -29,17 +27,17 @@ public abstract class CarService {
     /*
      * arg:
      *  id: car_id
-     *  ownerID: user_id of owner, -1 if unowned
+     *  ownerID: user_id of owner, 0 if unowned (There is a user_id:0, but it is manually set to employee and will not be generated)
      *  inLot: bool if it should be be added to the Lot cars as well as this.cars
      *  model: name of the car
      */
     public static void loadCar(int id, int ownerID, boolean inLot, String model){
-        if (ownerID >= -1){
+        if (ownerID >= 0){
             Car car;
-            if(ownerID == -1){
+            if(ownerID == 0){
                 car = new Car(id, model);
             } else {
-                User customer = UserService.getUserByID(ownerID);
+                User customer = UserService.getUserById(ownerID);
                 assert customer instanceof Customer;
                 car = new Car(id, model, (Customer) customer);
             }
@@ -77,7 +75,7 @@ public abstract class CarService {
                 s = "stowed|";
             }
             result.append(s)
-                    .append(car.getID())
+                    .append(car.getId())
                     .append(": ")
                     .append(car.getModel())
                     .append(System.lineSeparator());
@@ -93,7 +91,7 @@ public abstract class CarService {
     private static String getEntries(Car[] cars) {
         StringBuilder result = new StringBuilder(System.lineSeparator());
         for (Car car : cars) {
-            result.append(car.getID())
+            result.append(car.getId())
                     .append(": ")
                     .append(car.getModel())
                     .append(System.lineSeparator());
@@ -153,6 +151,15 @@ public abstract class CarService {
             }
         }
         return result.toArray();
+    }
+
+    public static Car getCarById(int id) {
+        for(Car c : cars.toArray()){
+            if(c.getId() == id){
+                return c;
+            }
+        }
+        return null;
     }
 
     /*

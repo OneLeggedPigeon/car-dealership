@@ -1,6 +1,7 @@
 package com.revature.db.service;
 
 import com.revature.service.CarService;
+import com.revature.service.OfferService;
 import com.revature.service.UserService;
 
 import java.sql.ResultSet;
@@ -12,6 +13,19 @@ public  class UpdateService {
 
     // Load EVERYTHING from the database
     private UpdateService(){
+        updateAll();
+    }
+
+    public static UpdateService getInstance() {
+        if (instance == null) {
+            instance = new UpdateService();
+        }
+        return instance;
+    }
+
+    // TODO: set everything local to null first, then make this public
+    // TODO: perhaps also seperate out each of the updates?
+    private void updateAll(){
         System.out.println("Loading Users");
         ResultSet logRS = SQLQueryService.query("select * from login");
         ResultSet empRS = SQLQueryService.query("select login.user_id from employee, login where employee.user_id = login.user_id");
@@ -20,6 +34,10 @@ public  class UpdateService {
 
         System.out.println("Loading Cars");
         ResultSet carRS = SQLQueryService.query("select * from car");
+
+        System.out.println("Loading Offers");
+        ResultSet offRS = SQLQueryService.query("select * from offer");
+
         try {
             assert logRS != null;
             assert empRS != null;
@@ -42,14 +60,21 @@ public  class UpdateService {
             // Cars
             assert carRS != null;
             while (carRS.next()){
-                int owner = carRS.getInt("user_id");
-                // TODO: refactor everything so user_id 0 can own a car
-                if (owner == 0) owner = -1;
                 CarService.loadCar(
                         carRS.getInt("car_id"),
-                        owner,
+                        carRS.getInt("user_id"),
                         carRS.getBoolean("in_lot"),
                         carRS.getString("model")
+                );
+            }
+            // Offers
+            assert offRS != null;
+            while (offRS.next()){
+                OfferService.loadOffer(
+                        offRS.getInt("offer_id"),
+                        offRS.getInt("user_id"),
+                        offRS.getInt("car_id"),
+                        offRS.getInt("amount")
                 );
             }
         } catch (SQLException e) {
@@ -57,12 +82,5 @@ public  class UpdateService {
             e.printStackTrace();
             System.exit(0);
         }
-    }
-
-    public static UpdateService getInstance() {
-        if (instance == null) {
-            instance = new UpdateService();
-        }
-        return instance;
     }
 }
