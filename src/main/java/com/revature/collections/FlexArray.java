@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 // generic array from: https://www.baeldung.com/java-generic-array
 
-// Object that contains an array
+// E that contains an array
 // makes a new array with a larger size each time an element is added
 public class FlexArray<E>{
 
@@ -15,6 +15,11 @@ public class FlexArray<E>{
     public FlexArray(Class<?> clazz){
         this.clazz = clazz;
         elements = array(0);
+    }
+
+    public FlexArray(Class<?> clazz, E[] e){
+        this.clazz = clazz;
+        elements = e;
     }
 
     private E[] array(int length){
@@ -84,8 +89,8 @@ public class FlexArray<E>{
     public E get(int index){ return elements[index]; }
 
     public boolean isEmpty() {
-        for (Object t : elements) {
-            if (t != null) {
+        for (E e : elements) {
+            if (e != null) {
                 return false;
             }
         }
@@ -138,5 +143,14 @@ public class FlexArray<E>{
 
     public E[] toArray() {
         return Arrays.copyOf(elements, elements.length);
+    }
+
+    public boolean has(E element) {
+        for (E e : elements) {
+            if (e.equals(element)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

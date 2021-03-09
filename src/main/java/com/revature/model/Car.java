@@ -2,6 +2,8 @@ package com.revature.model;
 
 import com.revature.service.CarService;
 
+import java.util.Optional;
+
 public class Car {
     private int id;
     private String model;
@@ -23,7 +25,7 @@ public class Car {
     }
 
     public boolean inLot(){
-        return CarService.inLot(id);
+        return CarService.inLot(this);
     }
 
     public String getModel() {
@@ -34,8 +36,8 @@ public class Car {
         return id;
     }
 
-    public Customer getOwner() {
-        return owner;
+    public Optional<Customer> getOwner() {
+        return Optional.ofNullable(owner);
     }
 
     public String toString(){

@@ -1,6 +1,8 @@
 package com.revature.model;
 
 import com.revature.collections.FlexArray;
+import com.revature.service.CarService;
+import com.revature.service.UserService;
 
 // Singleton
 public class Lot {
@@ -18,6 +20,10 @@ public class Lot {
 
     private static Lot instance;
 
+    private Lot(){
+
+    }
+
     public static Lot getInstance() {
         if (instance == null) {
             instance = new Lot();
@@ -26,8 +32,8 @@ public class Lot {
     }
 
     // checks if arg: id matches one of the values in this.cars
-    public boolean inLot(int id) {
-        return (cars.get(id) != null);
+    public boolean inLot(Car car) {
+        return (cars.has(car));
     }
 
     public void addCar(Car car) {
@@ -36,16 +42,14 @@ public class Lot {
 
     public void removeCar(Car car) {
         cars.remove(car);
+        //TODO
     }
 
-    public String toString(){
-        StringBuilder result = new StringBuilder();
-        for (Car car : cars.toArray()){
-            result.append(car.getId())
-                    .append(": ")
-                    .append(car.getModel())
-                    .append(System.lineSeparator());
-        }
-        return result.toString();
+    public Car[] toArray(){
+        return cars.toArray();
+    }
+
+    public boolean isEmpty() {
+        return cars.isEmpty();
     }
 }
