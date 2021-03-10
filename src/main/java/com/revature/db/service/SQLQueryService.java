@@ -4,17 +4,16 @@ import com.revature.db.ConnectionSession;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class SQLQueryService {
     public static ResultSet query(String statement){
-        try (ConnectionSession sess = new ConnectionSession()) {
-            Connection conn = sess.getActiveConnection();
+        try (ConnectionSession ses = new ConnectionSession()) {
+            Connection conn = ses.getActiveConnection();
             Statement stmt = conn.createStatement();
             return stmt.executeQuery(statement);
-        } catch (Exception throwables) {
-            throwables.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return null;
@@ -23,12 +22,13 @@ public abstract class SQLQueryService {
     /*
      * returns: first value in the column, or -1 if unsuccessful.
     */
-    public static int intQuery(String statement, String columnLable){
+    public static int intQuery(String statement, String columnLabel){
         ResultSet rs = SQLQueryService.query(statement);
         int result = -1;
         try {
+            assert rs != null;
             if(rs.next()) {
-                result = rs.getInt(columnLable);
+                result = rs.getInt(columnLabel);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -17,7 +17,7 @@ public abstract class LoginMenu {
         User user = UserService.getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
             System.out.println("login successful");
-            //loop login if there is a User primed to relogin automatically
+            //loop login if there is a User primed to re-login automatically
             do{
                 if(primed != null){
                     user = primed;

@@ -1,7 +1,6 @@
 package com.revature.db;
 
 import java.io.Closeable;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -36,10 +35,11 @@ public class ConnectionFactory implements Closeable {
     }
 
 
+    @SuppressWarnings("SameParameterValue")
     private Connection createConnection(String profile) {
         Properties props = new Properties();
         try {
-            props.load(new FileReader(new File("src/main/resources/db.properties")));
+            props.load(new FileReader("src/main/resources/db.properties"));
 
             String connectionTemplate = "car.jdbc.connection.profile." + profile;
             System.out.println("creating a connection");
@@ -58,12 +58,12 @@ public class ConnectionFactory implements Closeable {
     }
 
     @Override
-    public void close() throws IOException {
+    public void close(){
         for(Connection con: connectionPool){
             try {
                 con.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }

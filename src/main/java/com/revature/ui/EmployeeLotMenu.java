@@ -9,7 +9,7 @@ import com.revature.utility.MenuService;
 import java.util.Scanner;
 
 public abstract class EmployeeLotMenu {
-    protected static String[] options = new String[]{
+    protected static final String[] options = new String[]{
             "add",
             "remove",
             "offers",

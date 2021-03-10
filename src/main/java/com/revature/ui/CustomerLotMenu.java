@@ -9,11 +9,6 @@ import com.revature.utility.MenuService;
 import java.util.Scanner;
 
 public abstract class CustomerLotMenu {
-    protected static String[] options = new String[]{
-            "select",
-            "back",
-            "exit"
-    };
 
     public static void showMenu(Scanner scan, Customer customer){
         System.out.println("===Welcome to the Car Lot, CUSTOMER===");

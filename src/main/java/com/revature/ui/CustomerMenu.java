@@ -7,7 +7,7 @@ import com.revature.utility.MenuService;
 import java.util.Scanner;
 
 public abstract class CustomerMenu{
-    protected static String[] options = new String[]{
+    protected static final String[] options = new String[]{
             "owned",
             "lot",
             "payments",
@@ -48,7 +48,7 @@ public abstract class CustomerMenu{
     }
 
     private static void payments(Customer customer) {
-        System.out.println("===Oustanding Payments===");
+        System.out.println("===Outstanding Payments===");
         if (!customer.getLoans().isEmpty()) {
             System.out.println(customer.getLoans().toString());
         } else {

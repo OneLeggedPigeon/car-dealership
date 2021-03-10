@@ -22,7 +22,7 @@ public class ConnectionSession implements AutoCloseable {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close(){
         //System.out.println("closing the session and giving connection id: " + locationIndex + " back to the connection pool");
         com.revature.db.ConnectionFactory.getInstance().getConnectionPool()[locationIndex]=activeConnection;
         activeConnection = null;

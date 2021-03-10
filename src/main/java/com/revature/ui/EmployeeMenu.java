@@ -9,7 +9,7 @@ import com.revature.utility.MenuService;
 import java.util.Scanner;
 
 public abstract class EmployeeMenu{
-    protected static String[] options = new String[]{
+    protected static final String[] options = new String[]{
             "lot",
             "payments",
             "logout",
@@ -46,7 +46,7 @@ public abstract class EmployeeMenu{
     }
 
     private static void payments() {
-        System.out.println("===Oustanding Payments===");
+        System.out.println("===Outstanding Payments===");
         StringBuilder s = new StringBuilder();
         boolean empty = true;
         for(Customer customer : UserService.getCustomers()){

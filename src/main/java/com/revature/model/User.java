@@ -2,17 +2,9 @@ package com.revature.model;
 
 public class User{
 
-    private int id;
-    private String username;
-    private String password;
-
-    public User(){
-
-    }
-
-    public User(String username){
-        this.username = username;
-    }
+    private final int id;
+    private final String username;
+    private final String password;
 
     public User(int id, String username, String password) {
         this.id = id;

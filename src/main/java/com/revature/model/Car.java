@@ -18,7 +18,7 @@ public class Car {
         this.id = id;
         this.model = model;
         try {
-            offers = new FlexArray<Offer>(Class.forName("com.revature.model.Offer"));
+            offers = new FlexArray<>(Class.forName("com.revature.model.Offer"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -29,7 +29,7 @@ public class Car {
         this.model = model;
         this.owner = owner;
         try {
-            offers = new FlexArray<Offer>(Class.forName("com.revature.model.Offer"));
+            offers = new FlexArray<>(Class.forName("com.revature.model.Offer"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -41,10 +41,6 @@ public class Car {
 
     public void addOffer(Offer offer) {
         offers.add(offer);
-    }
-
-    public void clearOffers() {
-        offers.Clear();
     }
 
     public boolean inLot(){
@@ -70,9 +66,5 @@ public class Car {
     public String toString(){
        return id + ": " + model;
     }
-
-    /*public void setModel(String model) {
-        this.model = model;
-    }*/
 
 }

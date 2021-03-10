@@ -17,13 +17,11 @@ public abstract class UserService {
 
     static {
         try {
-            users = new FlexArray<User>(Class.forName("com.revature.model.User"));
+            users = new FlexArray<>(Class.forName("com.revature.model.User"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-
-    static User activeUser = null;
 
     public static void createUser(int id, String username, String password){
         User user = new User(id, username, password);
@@ -104,7 +102,7 @@ public abstract class UserService {
     public static Customer[] getCustomers() {
         FlexArray<Customer> customers = null;
         try {
-            customers = new FlexArray<Customer>(Class.forName("com.revature.model.Customer"));
+            customers = new FlexArray<>(Class.forName("com.revature.model.Customer"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

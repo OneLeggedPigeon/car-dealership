@@ -1,14 +1,5 @@
 package com.revature.service;
 
-import com.revature.model.Car;
-import com.revature.model.Customer;
-import com.revature.model.Offer;
-import com.revature.model.User;
-
-import java.text.NumberFormat;
-
-import java.text.NumberFormat;
-
 public abstract class PaymentService {
     public static final double defaultSalesTax = .10;
     public static final double defaultDownPayment = 0;
@@ -20,9 +11,7 @@ public abstract class PaymentService {
     }
 
     public static float calculateMonthlyPayment(double price, double salesTax, double downPayment, double api, int term){
-        float result = 0;
         double r = api/12;
-        result = (float) ((price*(1+salesTax)-downPayment)*r*Math.pow(1+r,term)/(Math.pow(1+r,term)-1));
-        return result;
+        return (float) ((price*(1+salesTax)-downPayment)*r*Math.pow(1+r,term)/(Math.pow(1+r,term)-1));
     }
 }

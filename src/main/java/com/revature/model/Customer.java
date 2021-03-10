@@ -10,9 +10,9 @@ public class Customer extends User{
     public Customer(int id, String username, String password) {
         super(id,username,password);
         try {
-            cars = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
-            offers = new FlexArray<Offer>(Class.forName("com.revature.model.Offer"));
-            loans = new FlexArray<Loan>(Class.forName("com.revature.model.Loan"));
+            cars = new FlexArray<>(Class.forName("com.revature.model.Car"));
+            offers = new FlexArray<>(Class.forName("com.revature.model.Offer"));
+            loans = new FlexArray<>(Class.forName("com.revature.model.Loan"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

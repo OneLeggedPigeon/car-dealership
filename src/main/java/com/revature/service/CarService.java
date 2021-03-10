@@ -5,9 +5,9 @@ import com.revature.db.PreparedCar;
 import com.revature.model.Car;
 import com.revature.model.Customer;
 import com.revature.model.Lot;
-import com.revature.model.User;
 
 // Holds all Cars locally
+@SuppressWarnings("unused")
 public abstract class CarService {
 
     //FlexArray of all cars
@@ -15,7 +15,7 @@ public abstract class CarService {
 
     static {
         try {
-            cars = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
+            cars = new FlexArray<>(Class.forName("com.revature.model.Car"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -143,7 +143,7 @@ public abstract class CarService {
     public static Car[] arrayUnownedCary() {
         FlexArray<Car> result = null;
         try {
-            result = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
+            result = new FlexArray<>(Class.forName("com.revature.model.Car"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -159,7 +159,7 @@ public abstract class CarService {
     public static Car[] arrayOfferCar() {
         FlexArray<Car> result = null;
         try {
-            result = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
+            result = new FlexArray<>(Class.forName("com.revature.model.Car"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -175,7 +175,7 @@ public abstract class CarService {
     public static Car[] arrayUnownedNoLotCar() {
         FlexArray<Car> result = null;
         try {
-            result = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
+            result = new FlexArray<>(Class.forName("com.revature.model.Car"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

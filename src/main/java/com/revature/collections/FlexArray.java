@@ -7,10 +7,11 @@ import java.util.Arrays;
 
 // E that contains an array
 // makes a new array with a larger size each time an element is added
+@SuppressWarnings("ALL")
 public class FlexArray<E>{
 
     protected E[] elements;
-    protected Class<?> clazz;
+    protected final Class<?> clazz;
 
     public FlexArray(Class<?> clazz){
         this.clazz = clazz;
@@ -35,7 +36,7 @@ public class FlexArray<E>{
     }
 
     public void add(E[] newElements) {
-        E[] newArray = array(elements.length + newElements.length);;
+        E[] newArray = array(elements.length + newElements.length);
         System.arraycopy(elements, 0, newArray, 0, elements.length);
         System.arraycopy(newElements, 0, newArray, elements.length, newElements.length);
         // add new elements
@@ -136,7 +137,7 @@ public class FlexArray<E>{
         String[] strings = toStringArray();
         StringBuilder result = new StringBuilder();
         for (String s : strings) {
-            result = result.append(s).append(System.lineSeparator());
+            result.append(s).append(System.lineSeparator());
         }
         return result.toString();
     }

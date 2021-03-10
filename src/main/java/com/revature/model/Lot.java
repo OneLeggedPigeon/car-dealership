@@ -11,7 +11,7 @@ public class Lot {
 
     static {
         try {
-            cars = new FlexArray<Car>(Class.forName("com.revature.model.Car"));
+            cars = new FlexArray<>(Class.forName("com.revature.model.Car"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public abstract class EmployeeCarMenu {
 
-    protected static String[] offerOptions = new String[]{
+    protected static final String[] options = new String[]{
             "accept",
             "reject",
             "back"
@@ -40,7 +40,7 @@ public abstract class EmployeeCarMenu {
         if(input > -1){
             for(Offer offer : car.getOffers().toArray()){
                 if(offer.getId() == input){
-                    result = judgeOffer(scan, employee, offer);
+                    result = judgeOffer(scan, offer);
                 }
             }
         } else {
@@ -49,8 +49,8 @@ public abstract class EmployeeCarMenu {
         return result;
     }
 
-    private static boolean judgeOffer(Scanner scan, Employee employee, Offer offer) {
-        switch (MenuService.queryMenu(scan, offerOptions)) {
+    private static boolean judgeOffer(Scanner scan, Offer offer) {
+        switch (MenuService.queryMenu(scan, options)) {
             case "accept":
                 OfferService.acceptOffer(offer);
                 System.out.println("offer accepted!");

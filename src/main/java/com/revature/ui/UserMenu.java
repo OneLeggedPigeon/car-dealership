@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public abstract class UserMenu {
 
-    protected static String[] options = new String[]{
+    protected static final String[] options = new String[]{
             "register",
             "logout",
             "exit"
