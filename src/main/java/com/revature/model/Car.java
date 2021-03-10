@@ -6,8 +6,8 @@ import com.revature.service.CarService;
 import java.util.Optional;
 
 public class Car {
-    private int id;
-    private String model;
+    private final int id;
+    private final String model;
     private Customer owner;
 
     //FlexArray of all offers for a car
@@ -61,6 +61,10 @@ public class Car {
 
     public Optional<Customer> getOwner() {
         return Optional.ofNullable(owner);
+    }
+
+    public void setOwner(Customer customer) {
+        owner = customer;
     }
 
     public String toString(){

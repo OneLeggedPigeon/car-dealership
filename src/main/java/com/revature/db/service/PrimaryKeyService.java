@@ -1,19 +1,10 @@
 package com.revature.db.service;
 
-import com.revature.db.ConnectionSession;
-
 import java.sql.*;
 
 public abstract class PrimaryKeyService {
-    public static int newUserID(){
-        return newID("SELECT MAX(user_id) FROM login");
-    }
 
-    public static int newOfferID() {
-        return newID("SELECT MAX(offer_id) FROM offer");
-    }
-
-    private static int newID(String query) {
+    private static int newId(String query) {
         int id = -1;
         try {
             ResultSet rs = SQLQueryService.query(query);
@@ -31,5 +22,17 @@ public abstract class PrimaryKeyService {
             throw new IndexOutOfBoundsException("Couldn't get the new Primary Key for some reason");
         }
         return id;
+    }
+
+    public static int newUserId(){
+        return newId("SELECT MAX(user_id) FROM login");
+    }
+
+    public static int newOfferId() {
+        return newId("SELECT MAX(offer_id) FROM offer");
+    }
+
+    public static int newLoanId() {
+        return newId("SELECT MAX(loan_id) FROM loan");
     }
 }

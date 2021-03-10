@@ -1,8 +1,7 @@
 package com.revature.ui;
 
-import com.revature.db.PreparedUser;
 import com.revature.db.service.PrimaryKeyService;
-import com.revature.service.MenuService;
+import com.revature.utility.MenuService;
 import com.revature.service.UserService;
 
 import java.sql.SQLException;
@@ -60,8 +59,8 @@ public abstract class RootMenu {
         if(!exit) {
             System.out.println("provide password");
             String password = scan.nextLine();
-            int id = PrimaryKeyService.newUserID();
-            UserService.makeUser(id, username, password);
+            int id = PrimaryKeyService.newUserId();
+            UserService.createUser(id, username, password);
             System.out.println("account creation successful");
         }
     }

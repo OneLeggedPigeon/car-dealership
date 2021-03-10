@@ -13,16 +13,42 @@ public abstract class OfferService {
         Customer customer = UserService.getCustomerById(user_id);
         Offer offer = new Offer(offer_id, customer, car, amount);
         assert car != null;
-        attachOffer(offer, car);
+        attachOffer(offer, car, customer);
     }
 
-    public static void makeOffer(int amount, Customer customer, Car car) {
-        Offer offer = new Offer(PrimaryKeyService.newOfferID(), customer, car, amount);
-        attachOffer(offer, car);
-        PreparedOffer.createOffer(offer.getId(), customer.getID(), car.getId(), amount);
+    public static void createOffer(Customer customer, Car car, int amount) {
+        Offer offer = new Offer(PrimaryKeyService.newOfferId(), customer, car, amount);
+        attachOffer(offer, car, customer);
+        PreparedOffer.createOffer(offer.getId(), customer.getId(), car.getId(), amount);
     }
 
-    public static void attachOffer(Offer offer, Car car){
+    private static void attachOffer(Offer offer, Car car, Customer customer){
         car.addOffer(offer);
+        customer.addOffer(offer);
+    }
+
+    public static void acceptOffer(Offer offer) {
+        Customer customer = offer.getCustomer();
+        Car car = offer.getCar();
+
+        // assign the loan to the customer
+        LoanService.createLoan(customer,car,offer.getAmount());
+        // give the car to the Customer
+        CarService.assignCar(car, customer);
+
+        // once transferred to a loan,
+        //  remove the offer
+        removeOffer(offer);
+        //  and remove all offers from the matching car
+        for(Offer o : car.getOffers().toArray()){
+            removeOffer(o);
+        }
+    }
+
+    public static void removeOffer(Offer offer) {
+        // remove local references
+        offer.remove();
+        // remove from database
+        PreparedOffer.deleteOffer(offer);
     }
 }

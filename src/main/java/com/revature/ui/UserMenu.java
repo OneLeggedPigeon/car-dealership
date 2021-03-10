@@ -1,7 +1,7 @@
 package com.revature.ui;
 
 import com.revature.model.User;
-import com.revature.service.MenuService;
+import com.revature.utility.MenuService;
 import com.revature.service.UserService;
 
 import java.util.Scanner;

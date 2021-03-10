@@ -1,6 +1,7 @@
 package com.revature.db.service;
 
 import com.revature.service.CarService;
+import com.revature.service.LoanService;
 import com.revature.service.OfferService;
 import com.revature.service.UserService;
 
@@ -37,6 +38,9 @@ public  class UpdateService {
 
         System.out.println("Loading Offers");
         ResultSet offRS = SQLQueryService.query("select * from offer");
+
+        System.out.println("Loading Loans");
+        ResultSet loanRS = SQLQueryService.query("select * from loan");
 
         try {
             assert logRS != null;
@@ -75,6 +79,18 @@ public  class UpdateService {
                         offRS.getInt("user_id"),
                         offRS.getInt("car_id"),
                         offRS.getInt("amount")
+                );
+            }
+            // Loans
+            assert loanRS != null;
+            while (loanRS.next()){
+                LoanService.loadLoan(
+                        loanRS.getInt("loan_id"),
+                        loanRS.getInt("user_id"),
+                        loanRS.getInt("car_id"),
+                        loanRS.getInt("remaining_terms"),
+                        loanRS.getFloat("monthly_due"),
+                        loanRS.getInt("principle")
                 );
             }
         } catch (SQLException e) {

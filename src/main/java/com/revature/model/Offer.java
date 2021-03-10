@@ -1,10 +1,11 @@
 package com.revature.model;
 
+// held in an array by car
 public class Offer {
-    private int id;
-    private int amount;
-    private Customer customer;
-    private Car car;
+    private final int id;
+    private final int amount;
+    private final Customer customer;
+    private final Car car;
 
     public Offer(int id, Customer customer, Car car, int amount) {
         this.id = id;
@@ -31,5 +32,11 @@ public class Offer {
 
     public String toString(){
         return "id: "+id+" "+customer.getUsername()+" offers $"+amount+" for "+car.getModel();
+    }
+
+    // remove all references to the offer
+    public void remove(){
+        customer.getOffers().remove(this);
+        car.getOffers().remove(this);
     }
 }

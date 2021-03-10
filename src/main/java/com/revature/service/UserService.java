@@ -25,7 +25,7 @@ public abstract class UserService {
 
     static User activeUser = null;
 
-    public static void makeUser(int id, String username, String password){
+    public static void createUser(int id, String username, String password){
         User user = new User(id, username, password);
         users.add(user);
         // add to database
@@ -49,10 +49,10 @@ public abstract class UserService {
 
     // Change a User to a Customer
     public static Customer registerUser(User u){
-        Customer c = new Customer(u.getID(), u.getUsername(), u.getPassword());
+        Customer c = new Customer(u.getId(), u.getUsername(), u.getPassword());
         users.add(c);
         // add to database
-        PreparedUser.createCustomer(u.getID());
+        PreparedUser.createCustomer(u.getId());
         return c;
     }
 
@@ -82,7 +82,7 @@ public abstract class UserService {
 
     public static User getUserById(int id) {
         for(User u : users.toArray()){
-            if(u.getID() == id){
+            if(u.getId() == id){
                 return u;
             }
         }

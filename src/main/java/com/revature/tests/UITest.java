@@ -22,6 +22,6 @@ public class UITest {
         EmployeeMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserByUsername("Nate")));
 
         //TESTING CUSTOMER MENU
-        //CustomerMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserById(1)));
+        //CustomerMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserById(4)));
     }
 }

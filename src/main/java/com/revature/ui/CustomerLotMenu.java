@@ -4,7 +4,7 @@ import com.revature.model.Car;
 import com.revature.model.Customer;
 import com.revature.model.Lot;
 import com.revature.service.CarService;
-import com.revature.service.MenuService;
+import com.revature.utility.MenuService;
 
 import java.util.Scanner;
 

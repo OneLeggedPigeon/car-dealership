@@ -1,6 +1,7 @@
 package com.revature.service;
 
 import com.revature.collections.FlexArray;
+import com.revature.db.PreparedCar;
 import com.revature.model.Car;
 import com.revature.model.Customer;
 import com.revature.model.Lot;
@@ -18,10 +19,6 @@ public abstract class CarService {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    public static Car makeCar(int id, String model){
-        return null;
     }
 
     /*
@@ -47,6 +44,14 @@ public abstract class CarService {
                 Lot.getInstance().addCar(car);
             }
         }
+    }
+
+    public static void assignCar(Car car, Customer customer) {
+        customer.addCar(car);
+        Lot.getInstance().removeCar(car);
+        car.setOwner(customer);
+        // DataBase (automatically removes from lot as well
+        PreparedCar.updateOwner(car.getId(),customer.getId());
     }
 
     public static boolean inLot(Car car) {

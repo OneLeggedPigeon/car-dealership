@@ -32,7 +32,7 @@ public class User{
         return password;
     }
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 

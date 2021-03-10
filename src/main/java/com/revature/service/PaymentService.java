@@ -5,20 +5,27 @@ import com.revature.model.Customer;
 import com.revature.model.Offer;
 import com.revature.model.User;
 
-public abstract class PaymentService {
-    private static final double defaultSalesTax = .10;
-    private static final double defaultDownPayment = 0;
-    private static final double defaultAPI = .3;
-    private static final int defaultTerm = 12;
+import java.text.NumberFormat;
 
-    public static double calculateMonthlyPayment(double price){
+import java.text.NumberFormat;
+
+public abstract class PaymentService {
+    public static final double defaultSalesTax = .10;
+    public static final double defaultDownPayment = 0;
+    public static final double defaultAPI = .3;
+    public static final int defaultTerm = 12;
+
+    public static float calculateMonthlyPayment(double price){
         return calculateMonthlyPayment(price, defaultSalesTax, defaultDownPayment, defaultAPI, defaultTerm);
     }
 
-    public static double calculateMonthlyPayment(double price, double salesTax, double downPayment, double api, int term){
+    public static float calculateMonthlyPayment(double price, double salesTax, double downPayment, double api, int term){
         double result = 0;
         double r = api/12;
         result = (price*(1+salesTax)-downPayment)*r*Math.pow(1+r,term)/(Math.pow(1+r,term)-1);
-        return result;
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setMaximumFractionDigits(2);
+        nf.format(result);
+        return (float) result;
     }
 }

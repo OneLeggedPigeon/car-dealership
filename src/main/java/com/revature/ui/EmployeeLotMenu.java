@@ -3,9 +3,8 @@ package com.revature.ui;
 import com.revature.model.Car;
 import com.revature.model.Employee;
 import com.revature.model.Lot;
-import com.revature.model.Offer;
 import com.revature.service.CarService;
-import com.revature.service.MenuService;
+import com.revature.utility.MenuService;
 
 import java.util.Scanner;
 

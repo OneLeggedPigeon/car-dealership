@@ -40,29 +40,6 @@ public abstract class PreparedUser {
         }
     }
 
-    public static String findById(Integer id) {
-        /*String sql = "select * from membership_type where id=?";
-        try (
-                ConnectionSession sess = new ConnectionSession();
-                PreparedStatement ps = sess.getActiveConnection().prepareStatement(sql);
-        ) {
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            String result = "";
-            rs.next();  // since next only needs to be called once to get a single result, a while loop does not
-            // have to be used.
-            result = rs.getString(2);
-            return result;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }*/
-        return null;
-    }
-
     public static int update(String s) {
         return 0;
     }

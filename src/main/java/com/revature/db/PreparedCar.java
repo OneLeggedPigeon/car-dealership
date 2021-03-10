@@ -38,9 +38,22 @@ public abstract class PreparedCar {
             return -1;
         }
     }
-    // TODO: add customers id to car row in DB to indicate ownership
-    public static int purchaseCar(int carID, int customerID){
-        return -1;
+
+    public static int updateOwner(int carId, int ownerId) {
+        // make sure car is out of the lot
+        updateInLot(carId, false);
+        try (ConnectionSession sess = new ConnectionSession()) {
+            Connection conn = sess.getActiveConnection();
+            PreparedStatement ps = conn.prepareStatement("UPDATE car SET user_id=? WHERE car_id=?");
+            ps.setInt(1, ownerId);
+            ps.setInt(2, carId);
+            int i = ps.executeUpdate();
+            ps.close();
+            return i;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public static String findById(Integer id) {

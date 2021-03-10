@@ -2,7 +2,7 @@ package com.revature.ui;
 
 import com.revature.model.Customer;
 import com.revature.model.User;
-import com.revature.service.MenuService;
+import com.revature.utility.MenuService;
 
 import java.util.Scanner;
 
