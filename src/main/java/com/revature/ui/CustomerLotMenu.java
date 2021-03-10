@@ -25,22 +25,10 @@ public abstract class CustomerLotMenu {
 
     protected static boolean query(Scanner scan, Customer customer) {
         System.out.println(CarService.toStringCarsLot());
-        switch (MenuService.queryMenu(scan, options)) {
-            case "select":
-                select(scan, customer);
-                break;
-            case "back":
-                return true;
-            case "exit":
-                System.exit(1);
-                break;
-            default:
-                System.out.println("This shouldn't show up.");
-        }
-        return false;
+        return select(scan, customer);
     }
 
-    private static void select(Scanner scan, Customer customer) {
+    private static boolean select(Scanner scan, Customer customer) {
         if (CarService.existsLotCar()) {
             System.out.println("which car?");
             int input = MenuService.queryInt(scan, CarService.toStringCarsLot(), "car_id");
@@ -50,12 +38,13 @@ public abstract class CustomerLotMenu {
                     if (car.getId() == input) {
 
                         CustomerCarMenu.showMenu(scan, customer, car);
-                        break;
+                        return false;
                     }
                 }
             }
         } else {
             System.out.println("no cars in the lot");
         }
+        return true;
     }
 }
