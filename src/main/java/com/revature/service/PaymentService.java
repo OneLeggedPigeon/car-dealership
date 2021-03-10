@@ -20,12 +20,9 @@ public abstract class PaymentService {
     }
 
     public static float calculateMonthlyPayment(double price, double salesTax, double downPayment, double api, int term){
-        double result = 0;
+        float result = 0;
         double r = api/12;
-        result = (price*(1+salesTax)-downPayment)*r*Math.pow(1+r,term)/(Math.pow(1+r,term)-1);
-        NumberFormat nf = NumberFormat.getNumberInstance();
-        nf.setMaximumFractionDigits(2);
-        nf.format(result);
-        return (float) result;
+        result = (float) ((price*(1+salesTax)-downPayment)*r*Math.pow(1+r,term)/(Math.pow(1+r,term)-1));
+        return result;
     }
 }

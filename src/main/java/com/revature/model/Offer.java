@@ -31,7 +31,7 @@ public class Offer {
     }
 
     public String toString(){
-        return "id: "+id+" "+customer.getUsername()+" offers $"+amount+" for "+car.getModel();
+        return "id: "+id+" | "+customer.getUsername()+" offers $"+amount+" for "+car.getModel();
     }
 
     // remove all references to the offer

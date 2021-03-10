@@ -19,9 +19,11 @@ public class UITest {
         Scanner scan = new Scanner(System.in);
 
         //TESTING EMPLOYEE MENU
-        EmployeeMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserByUsername("Nate")));
-
-        //TESTING CUSTOMER MENU
-        //CustomerMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserById(1)));
+        if(args[0].equals("employee")){
+            EmployeeMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserByUsername("Nate")));
+        } else {
+            //TESTING CUSTOMER MENU
+            CustomerMenu.showMenu(scan, Objects.requireNonNull(UserService.getUserById(1)));
+        }
     }
 }

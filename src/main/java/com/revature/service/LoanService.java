@@ -28,10 +28,6 @@ public abstract class LoanService {
         );
     }
 
-    private static void createLoan(int loan_id, int user_id, int car_id, int remaining_terms, float monthly_due, int principle){
-
-    }
-
     public static void loadLoan(int loan_id, int user_id, int car_id, int remaining_terms, float monthly_due, int principle) {
         Customer customer = UserService.getCustomerById(user_id);
         Loan loan = new Loan(

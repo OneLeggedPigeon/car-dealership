@@ -1,5 +1,7 @@
 package com.revature.model;
 
+import java.text.NumberFormat;
+
 public class Loan {
     private final int id;
     private final Customer customer;
@@ -46,6 +48,8 @@ public class Loan {
     }
 
     public String toString(){
-        return customer+":"+car.getModel()+" | "+terms+" monthly payments of $"+monthlyDue+" remaining.";
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setMaximumFractionDigits(2);
+        return customer+":"+car.getModel()+" | "+terms+" monthly payments of $"+nf.format(monthlyDue)+" remaining.";
     }
 }
