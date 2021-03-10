@@ -100,4 +100,20 @@ public abstract class UserService {
         assert result instanceof Employee;
         return (Employee) result;
     }
+
+    public static Customer[] getCustomers() {
+        FlexArray<Customer> customers = null;
+        try {
+            customers = new FlexArray<Customer>(Class.forName("com.revature.model.Customer"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert customers != null;
+        for (User user : users.toArray()){
+            if(user instanceof Customer){
+                customers.add((Customer) user);
+            }
+        }
+        return customers.toArray();
+    }
 }

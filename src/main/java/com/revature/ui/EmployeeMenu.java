@@ -1,7 +1,9 @@
 package com.revature.ui;
 
+import com.revature.model.Customer;
 import com.revature.model.Employee;
 import com.revature.model.User;
+import com.revature.service.UserService;
 import com.revature.utility.MenuService;
 
 import java.util.Scanner;
@@ -30,8 +32,7 @@ public abstract class EmployeeMenu{
                 EmployeeLotMenu.showMenu(scan, employee);
                 break;
             case "payments":
-                //TODO:
-                System.out.println("payments");
+                payments();
                 break;
             case "logout":
                 return true;
@@ -42,5 +43,21 @@ public abstract class EmployeeMenu{
                 System.out.println("This shouldn't show up.");
         }
         return false;
+    }
+
+    private static void payments() {
+        System.out.println("===Oustanding Payments===");
+        StringBuilder s = new StringBuilder();
+        boolean empty = true;
+        for(Customer customer : UserService.getCustomers()){
+            if (!customer.getLoans().isEmpty()) {
+                empty = false;
+                s.append(customer.getLoans().toString());
+            }
+        }
+        if (empty){
+            s.append("You have no Outstanding Payments");
+        }
+        System.out.println(s);
     }
 }

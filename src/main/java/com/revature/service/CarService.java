@@ -34,9 +34,9 @@ public abstract class CarService {
             if(ownerID == 0){
                 car = new Car(id, model);
             } else {
-                User customer = UserService.getUserById(ownerID);
-                assert customer instanceof Customer;
-                car = new Car(id, model, (Customer) customer);
+                Customer customer = UserService.getCustomerById(ownerID);
+                car = new Car(id, model, customer);
+                customer.addCar(car);
             }
             cars.add(car);
             // redundant check that an owned car is not in the lot

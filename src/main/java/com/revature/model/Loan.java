@@ -44,4 +44,8 @@ public class Loan {
     public int getPrinciple() {
         return principle;
     }
+
+    public String toString(){
+        return customer+":"+car.getModel()+" | "+terms+" monthly payments of $"+monthlyDue+" remaining.";
+    }
 }

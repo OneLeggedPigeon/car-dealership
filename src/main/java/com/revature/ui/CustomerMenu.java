@@ -28,15 +28,13 @@ public abstract class CustomerMenu{
     protected static boolean query(Scanner scan, Customer customer) {
         switch (MenuService.queryMenu(scan, options)) {
             case "owned":
-                //TODO:
-                System.out.println("owned");
+                owned(customer);
                 break;
             case "lot":
                 CustomerLotMenu.showMenu(scan, customer);
                 break;
             case "payments":
-                //TODO:
-                System.out.println("payments");
+                payments(customer);
                 break;
             case "logout":
                 return true;
@@ -47,5 +45,23 @@ public abstract class CustomerMenu{
                 System.out.println("This shouldn't show up.");
         }
         return false;
+    }
+
+    private static void payments(Customer customer) {
+        System.out.println("===Oustanding Payments===");
+        if (!customer.getLoans().isEmpty()) {
+            System.out.println(customer.getLoans().toString());
+        } else {
+            System.out.println("You have no Outstanding Payments");
+        }
+    }
+
+    private static void owned(Customer customer) {
+        System.out.println("===Look at all your Beautiful Cars!===");
+        if (!customer.getCars().isEmpty()) {
+            System.out.println(customer.getCars().toString());
+        } else {
+            System.out.println("Whoops, looks like you don't have any!");
+        }
     }
 }

@@ -9,7 +9,7 @@
    We want to see that you can meet deadlines and that you can code. You are expected to complete the following requirements and give a 5 minute presentation of your project to our QC team.
 
 ## Requirements
-[ ]1. Functionality should reflect the below user stories.
+[X]1. Functionality should reflect the below user stories.
 [X]2. Data is stored in a database.
 [ ]3. A custom stored function is called to perform some portion of the functionality.
 [X]4. Data Access is performed through the use of JDBC in a data layer consisting of Data Access Objects.
@@ -29,7 +29,7 @@
 [X]As the system, I reject all other pending offers for a car when an offer is accepted.
 [X]As a user, I can register for a customer account.
 [X]As an employee, I can remove a car from the lot.
-[ ]As a customer, I can view the cars that I own.
-[ ]As a customer, I can view my remaining payments for a car.
-[ ]As an employee, I can view all payments.
+[X]As a customer, I can view the cars that I own.
+[X]As a customer, I can view my remaining payments for a car.
+[X]As an employee, I can view all payments.
 [X]As the system, I can calculate the monthly payment.
