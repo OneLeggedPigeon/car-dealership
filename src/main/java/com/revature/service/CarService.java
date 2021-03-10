@@ -198,10 +198,7 @@ public abstract class CarService {
         return null;
     }
 
-    /*
-    public void addCar(Car c){
-        cars.put(c.getID(),c);
-        // TODO: also add to db
+    public static void orderCars() {
+        cars.order();
     }
-    */
 }
